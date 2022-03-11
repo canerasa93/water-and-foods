@@ -1,3 +1,10 @@
-export default function Home() {
-  return <div>Home</div>;
+// Import Components
+import TranslatedText from 'src/components/translated-text/TranslatedText';
+
+function Home() {
+  return (
+    <TranslatedText label="GLOBAL.TEST" />
+  )
 }
+
+export default Home;

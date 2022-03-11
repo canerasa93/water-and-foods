@@ -1,5 +1,8 @@
 {
   "GLOBAL": {
-    "TEST": "TEST LANG DATA"
+    "TEST": "TEST LANG DATA",
+    "PAGE_TITLES": {
+      "HOME": "Anasayfa"
+    }
   }
 }
