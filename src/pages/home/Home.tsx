@@ -13,7 +13,7 @@ function Home() {
   // Store Variables
   const dispatch = useDispatch();
 
-  const testdata = useSelector((state: RootState) => state?.globalReducer?.success?.data);
+  const testdata = useSelector((state: RootState) => state?.globalReducer?.success?.data.companies);
 
   useEffect(() => {
     dispatch(test());
@@ -25,7 +25,7 @@ function Home() {
 
   return (
     <>
-      {testdata?.title} <br />
+      {testdata[0]?.name} <br />
       <TranslatedText label="GLOBAL.TEST" />
     </>
   );

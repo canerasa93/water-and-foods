@@ -12,7 +12,7 @@ export const test = () => (dispatch) => {
   };
 
   axios
-    .get('https://jsonplaceholder.typicode.com/todos/1', {
+    .get('http://localhost:3010/companies', {
       headers: config.headers
     })
     .then((res) => {
