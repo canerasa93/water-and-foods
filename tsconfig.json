@@ -25,5 +25,5 @@
     "types": ["jest", "node", "react"]
   },
   "exclude": ["node_modules/**/*"],
-  "include": ["src/store/**/*", "src/components/**/*", "src/helpers/**/*", "src/assets/**/*", "src/pages/**/*"]
+  "include": ["src/store/**/*", "src/components/**/*", "src/common/**/*", "src/assets/**/*", "src/pages/**/*"]
 }
