@@ -4,7 +4,6 @@ import Reducers from 'src/store/reducers';
 
 const reducer = combineReducers(Reducers);
 
-
 const enhancer = compose(applyMiddleware(ReduxThunk));
 const store = createStore(reducer, enhancer);
 

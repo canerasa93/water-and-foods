@@ -1,7 +1,7 @@
 import globalReducer from './globalReducer';
 
 const reducers = {
-  globalReducer,
+  globalReducer
 };
 
 export default reducers;

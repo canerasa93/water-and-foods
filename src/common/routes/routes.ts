@@ -1,7 +1,7 @@
 // Import Pages
 
 // Home Page
-import Home from '../../pages/home/Home'
+import Home from '../../pages/home/Home';
 
 export const routes = [
   {
