@@ -13,6 +13,9 @@ export const StyledSidebarCardBox = styled.div`
   background-color: ${THEME.COLORS.WHITE};
   padding: 24px;
   box-shadow: 0px 6px 24px 0px ${THEME.COLORS.SHADOW};
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
 `;
 
 export const StyledSidebarCardTitle = styled.span`
