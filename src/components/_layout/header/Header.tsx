@@ -1,6 +1,11 @@
-// Import Styled Components
+// Import Components
 import SvgBasket from 'src/components/icons/Basket';
 import Container from '../container/Container';
+
+// Import Utils
+import { getFormattedAmount } from 'src/common/utils/amount/amountUtil';
+
+// Import Styled Components
 import {
   StyledHeader,
   StyledHeaderCenter,
@@ -9,7 +14,12 @@ import {
   StyledBasketTotalPrice
 } from './_headerStyle';
 
+
+
 function Header() {
+  // Variables
+  const totalPrice = getFormattedAmount(39.97);
+
   return (
     <StyledHeader>
       <Container>
@@ -18,7 +28,7 @@ function Header() {
         </StyledHeaderCenter>
         <StyledHeaderRight>
           <SvgBasket />
-          <StyledBasketTotalPrice>{'39,97'}</StyledBasketTotalPrice>
+          <StyledBasketTotalPrice>{totalPrice}</StyledBasketTotalPrice>
         </StyledHeaderRight>
       </Container>
     </StyledHeader>
