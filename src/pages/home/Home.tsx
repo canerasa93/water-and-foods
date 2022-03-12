@@ -10,6 +10,7 @@ import { test } from 'src/store/actions/test/test';
 import FilterButtons from 'src/components/filter-buttons/FilterButtons';
 import ContentBox from 'src/components/content-box/ContentBox';
 import ProductList from 'src/components/product-list/ProductList';
+import Pagination from 'src/components/pagination/Pagination';
 
 function Home() {
   // Store Variables
@@ -50,6 +51,8 @@ function Home() {
           ]}
         />
       </ContentBox>
+
+      <Pagination />
     </Fragment>
   );
 }
