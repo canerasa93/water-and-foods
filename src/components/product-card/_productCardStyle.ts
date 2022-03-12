@@ -22,7 +22,7 @@ export const StyledProductCardImgWrapper = styled.div`
 export const StyledProductCardImg = styled.div`
   width: 100%;
   height: 92px;
-  background: #C4C4C4;
+  background: #c4c4c4;
 `;
 
 export const StyledProductPrice = styled.span`
@@ -30,14 +30,14 @@ export const StyledProductPrice = styled.span`
   color: ${THEME.COLORS.BLUE_1};
   margin-top: 10px;
   font-size: 14px;
-  font-weight:  ${THEME.FONT.BOLD};
+  font-weight: ${THEME.FONT.BOLD};
 `;
 
-export const StyledProductTitle= styled.h2`
+export const StyledProductTitle = styled.h2`
   display: block;
   color: ${THEME.COLORS.DARK};
   margin: 6px 0 10px 0;
   font-size: 14px;
   line-height: 16px;
-  font-weight:  ${THEME.FONT.SEMIBOLD};
+  font-weight: ${THEME.FONT.SEMIBOLD};
 `;

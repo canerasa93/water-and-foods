@@ -19,7 +19,6 @@ import { getFormattedAmount } from 'src/common/utils/amount/amountUtil';
 // Import Components
 import CustomIcon from '../custom-icon/CustomIcon';
 
-
 function BasketItem() {
   return (
     <StyledBasketItemWrapper>

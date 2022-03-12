@@ -9,8 +9,8 @@ interface ProductListProps {
 }
 
 ProductList.defaultProps = {
-    data: []
-}
+  data: []
+};
 
 function ProductList(props: ProductListProps) {
   // Desctruct Props

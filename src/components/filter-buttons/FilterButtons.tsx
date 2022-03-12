@@ -12,12 +12,12 @@ function FilterButtons() {
 
   const filterFakeData = [
     {
-        title: 'mug'
+      title: 'mug'
     },
     {
-        title: 'shirt'
-    },
-  ]
+      title: 'shirt'
+    }
+  ];
 
   return (
     <StyledFilterButtonsWrapper>
