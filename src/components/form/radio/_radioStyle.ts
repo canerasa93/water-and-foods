@@ -18,7 +18,7 @@ export const StyledRadioLabel = styled.label`
   cursor: pointer;
   display: inline-block;
   position: relative;
-  padding-left: 30px;
+  padding-left: 38px;
   margin-right: 10px;
   font-size: 14px;
   font-weight: ${THEME.FONT.REGULAR};
@@ -30,7 +30,7 @@ export const StyledRadioLabel = styled.label`
     width: 30px;
     height: 30px;
     position: absolute;
-    left: -5px;
+    left: 0;
     top: -6px;
     background: url(${checkImg}) center center no-repeat;
   }
