@@ -7,3 +7,7 @@ export enum BUTTON_VARIANTS {
   PRIMARY = 'primary',
   SECONDARY = 'secondary'
 }
+export enum BUTTON_SIZES {
+  SMALL = 'small',
+  NORMAL = 'normal'
+}

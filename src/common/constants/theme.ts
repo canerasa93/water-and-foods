@@ -2,6 +2,7 @@ export const THEME = {
   COLORS: {
     // BASE
     WHITE: '#FFFFFF',
+    DARK: '#191919',
     // GRAYS
     GRAY_1: '#FAFAFA',
     GRAY_2: '#6F6F6F',
@@ -12,7 +13,8 @@ export const THEME = {
     BLUE_1: '#1EA4CE',
     BLUE_2: '#147594',
     // SPECIAL
-    SHADOW: 'rgba(93, 62, 188, 0.04)'
+    SHADOW: 'rgba(93, 62, 188, 0.04)',
+    BORDER: '#F3F0FE'
   },
   FONT: {
     BOLD: '700',

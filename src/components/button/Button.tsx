@@ -1,5 +1,5 @@
 // Import Constants
-import { BUTTON_VARIANTS, BUTTON_TYPES } from '../../common/constants/button/buttonConstants';
+import { BUTTON_VARIANTS, BUTTON_TYPES, BUTTON_SIZES } from 'src/common/constants/button/buttonConstants';
 
 // Import Components
 import TranslatedText from '../translated-text/TranslatedText';
@@ -8,11 +8,12 @@ import TranslatedText from '../translated-text/TranslatedText';
 import { StyledButton } from './_buttonStyle';
 
 interface ButtonProps {
-  variant?: BUTTON_VARIANTS,
-  label: string,
-  display: BUTTON_TYPES,
+  variant?: BUTTON_VARIANTS;
+  label: string;
+  display: BUTTON_TYPES;
   translated?: boolean;
   margin?: string;
+  size?: BUTTON_SIZES;
 }
 
 function Button(props: ButtonProps) {
@@ -29,5 +30,6 @@ Button.defaultProps = {
   label: '',
   display: BUTTON_TYPES.INLINE_BLOCK,
   translated: true,
-  margin: 0
+  margin: 0,
+  size: BUTTON_SIZES.NORMAL
 };

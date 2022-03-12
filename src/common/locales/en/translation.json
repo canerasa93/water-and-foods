@@ -4,7 +4,12 @@
     "PAGE_TITLES": {
       "HOME": "Products"
     },
-    "SIDEBAR":{
+    "CTA": {
+      "BUTTONS": {
+        "ADD": "Add"
+      }
+    },
+    "SIDEBAR": {
       "CARD_TITLES": {
         "SORTING": "Sorting",
         "BRANDS": "Brands",
