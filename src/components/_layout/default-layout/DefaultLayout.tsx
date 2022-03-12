@@ -4,7 +4,7 @@ import Footer from '../footer/Footer';
 import Container from '../container/Container';
 
 // Import Styled Components
-import { StyledDefaultLayout } from './_defaultLayoutStyle';
+import { StyledDefaultLayout, StyledMain } from './_defaultLayoutStyle';
 
 function DefaultLayout(props) {
   // Desctruct Props
@@ -16,7 +16,9 @@ function DefaultLayout(props) {
       <Header />
 
       {/* App Content */}
-      <Container>{children}</Container>
+      <StyledMain>
+        <Container>{children}</Container>
+      </StyledMain>
 
       {/* App Footer */}
       <Footer />
