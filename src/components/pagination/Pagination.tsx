@@ -4,7 +4,9 @@ import {
   StyledPaginationContainer,
   StyledPaginationControl,
   StyledPaginationList,
-  StyledControlLabel
+  StyledControlLabel,
+  StyledPaginationNumber,
+  StyledPaginationDots
 } from './_paginationStyle';
 
 // Import Constants
@@ -14,6 +16,7 @@ import { ICON_LIST } from 'src/common/constants/icon/iconList';
 import CustomIcon from '../custom-icon/CustomIcon';
 import { ICON_SIZES } from 'src/common/constants/icon/iconSizes';
 import { ICON_STATUS } from 'src/common/constants/icon/iconStatus';
+import { Fragment } from 'react';
 
 function Pagination() {
   return (
@@ -24,7 +27,23 @@ function Pagination() {
           <StyledControlLabel primary>Prev</StyledControlLabel>
         </StyledPaginationControl>
 
-        <StyledPaginationList>list</StyledPaginationList>
+        <StyledPaginationList>
+          <Fragment>
+            <StyledPaginationNumber>1</StyledPaginationNumber>
+            <StyledPaginationNumber active>2</StyledPaginationNumber>
+            <StyledPaginationNumber>3</StyledPaginationNumber>
+            <StyledPaginationNumber>4</StyledPaginationNumber>
+          </Fragment>
+          <Fragment>
+          <StyledPaginationDots>...</StyledPaginationDots>
+          </Fragment>
+          <Fragment>
+            <StyledPaginationNumber>17</StyledPaginationNumber>
+            <StyledPaginationNumber>18</StyledPaginationNumber>
+            <StyledPaginationNumber>19</StyledPaginationNumber>
+            <StyledPaginationNumber>20</StyledPaginationNumber>
+          </Fragment>
+        </StyledPaginationList>
 
         <StyledPaginationControl>
           <StyledControlLabel>Next</StyledControlLabel>
