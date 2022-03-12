@@ -3,6 +3,7 @@ export const THEME = {
     // BASE
     WHITE: '#FFFFFF',
     DARK: '#191919',
+    DARK_2: '#525252',
     // GRAYS
     GRAY_1: '#FAFAFA',
     GRAY_2: '#6F6F6F',
