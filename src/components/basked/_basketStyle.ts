@@ -55,6 +55,12 @@ export const StyledBasketItemPrice = styled.span`
 
 export const StyledBasketItemTrigger = styled.span`
   cursor: pointer;
+  transition: all 400ms linear;
+  -webkit-transition: all 400ms linear;
+  -moz-transition: all 400ms linear;
+  &:hover {
+    opacity: 0.5;
+  }
 `;
 
 export const StyledBasketItemCounter = styled.div`

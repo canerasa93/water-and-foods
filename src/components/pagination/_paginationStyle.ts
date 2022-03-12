@@ -25,6 +25,12 @@ export const StyledPaginationControl = styled.button`
   cursor: pointer;
   border: none;
   background: transparent;
+  transition: all 400ms linear;
+  -webkit-transition: all 400ms linear;
+  -moz-transition: all 400ms linear;
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 export const StyledPaginationList = styled.div`
@@ -38,6 +44,7 @@ export const StyledControlLabel = styled.span`
   font-weight: ${THEME.FONT.SEMIBOLD};
   font-size: 14px;
   margin: 0 14px;
+  
 `;
 
 export const StyledPaginationDots = styled.span`
