@@ -9,4 +9,6 @@ export const StyledFooter = styled.div`
   align-items: center;
   align-content: center;
   text-align: center;
+  margin: 100px 0 0 0;
+  padding: 45px 0;
 `;
