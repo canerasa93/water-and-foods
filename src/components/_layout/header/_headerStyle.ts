@@ -13,6 +13,9 @@ export const StyledHeader = styled.div`
   flex-direction: row;
   align-content: center;
   background-color: ${THEME.COLORS.BLUE_1};
+  position: sticky;
+  top: 0;
+  z-index: 5;
 `;
 
 export const StyledHeaderCenter = styled.div`

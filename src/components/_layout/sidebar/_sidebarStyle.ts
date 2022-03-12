@@ -3,14 +3,21 @@ import styled from 'styled-components';
 
 // Styled Components
 export const StyledSidebar = styled.aside`
-  flex: 1 1 0%;
-  flex-direction: column;
-  max-width: 300px;
   display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  flex: 1 0 100%;
+  max-width: 296px;
+  position: sticky;
+  top: 100px;
 `;
 
 export const StyledSidebarRight = styled.aside`
-  flex: 1 1 0%;
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
+  flex: 1 0 100%;
+  max-width: 296px;
+  position: sticky;
+  top: 100px;
 `;
