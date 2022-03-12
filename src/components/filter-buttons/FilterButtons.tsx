@@ -1,7 +1,10 @@
 // Import Constants
 import { BUTTON_VARIANTS } from 'src/common/constants/button/buttonConstants';
 
-// Import Commponents
+// Import Styled Commponents
+import { StyledFilterButtonsWrapper } from './_filterButtonsStyle';
+
+// Import Components
 import Button from '../button/Button';
 
 function FilterButtons() {
@@ -17,7 +20,7 @@ function FilterButtons() {
   ]
 
   return (
-    <div>
+    <StyledFilterButtonsWrapper>
       {filterFakeData?.map((filterbutton, index) => {
         let mod: number = (index %= 2);
 
@@ -30,7 +33,7 @@ function FilterButtons() {
           />
         );
       })}
-    </div>
+    </StyledFilterButtonsWrapper>
   );
 }
 
