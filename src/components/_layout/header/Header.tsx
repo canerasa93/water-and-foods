@@ -1,6 +1,13 @@
 // Import Styled Components
+import SvgBasket from 'src/components/icons/Basket';
 import Container from '../container/Container';
-import { StyledHeader, StyledHeaderCenter, StyledHeaderRight, StyledLogo } from './_headerStyle';
+import {
+  StyledHeader,
+  StyledHeaderCenter,
+  StyledHeaderRight,
+  StyledLogo,
+  StyledBasketTotalPrice
+} from './_headerStyle';
 
 function Header() {
   return (
@@ -9,7 +16,10 @@ function Header() {
         <StyledHeaderCenter>
           <StyledLogo href={'/'} rel="noreferrer" />
         </StyledHeaderCenter>
-        <StyledHeaderRight>test</StyledHeaderRight>
+        <StyledHeaderRight>
+          <SvgBasket />
+          <StyledBasketTotalPrice>{'39,97'}</StyledBasketTotalPrice>
+        </StyledHeaderRight>
       </Container>
     </StyledHeader>
   );

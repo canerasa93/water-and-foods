@@ -37,4 +37,13 @@ export const StyledHeaderRight = styled.div`
   background-color: red;
   align-items: center;
   justify-content: center;
+  background-color: ${THEME.COLORS.BLUE_2};
+`;
+
+export const StyledBasketTotalPrice = styled.span`
+  color: ${THEME.COLORS.WHITE};
+  font-size: 14px;
+  font-weight: ${THEME.FONT.SEMIBOLD};
+  line-height: 16px;
+  margin-left: 10px;
 `;
