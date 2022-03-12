@@ -1,8 +1,15 @@
 // Import Styled Components
 import { StyledSidebarRight } from './_sidebarStyle';
 
+// Import Basket
+import Basket from 'src/components/basked/Basket';
+
 function SidebarRight() {
-  return <StyledSidebarRight>Sidebar Right</StyledSidebarRight>;
+  return (
+    <StyledSidebarRight>
+      <Basket />
+    </StyledSidebarRight>
+  );
 }
 
 export default SidebarRight;

@@ -1,6 +1,8 @@
 // Import Icons
-import { Basket } from 'src/components/icons';
+import { Basket, Minus, Plus } from 'src/components/icons';
 
 export const ICON_LIST = {
-  BASKET: Basket()
+  BASKET: Basket(),
+  PLUS: Plus(),
+  MINUS: Minus()
 };

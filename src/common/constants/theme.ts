@@ -14,7 +14,8 @@ export const THEME = {
     BLUE_2: '#147594',
     // SPECIAL
     SHADOW: 'rgba(93, 62, 188, 0.04)',
-    BORDER: '#F3F0FE'
+    BORDER: '#F3F0FE',
+    BORDER_1: '#F4F4F4'
   },
   FONT: {
     BOLD: '700',
