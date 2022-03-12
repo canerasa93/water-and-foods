@@ -14,7 +14,7 @@
     "format": "prettier --write .ts,.tsx,.js,.jsx,.json .",
     "tsc": "tsc",
     "tsc:watch": "tsc --watch",
-    "svgr": "svgr ./src/assets/icons -d ./src/components/Icons --icon"
+    "svgr": "svgr ./src/assets/icons -d ./src/components/icons --icon"
   },
   "dependencies": {
     "@svgr/cli": "^6.2.1",
