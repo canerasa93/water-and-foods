@@ -12,7 +12,9 @@ export const StyledSidebarCard = styled.div`
 export const StyledSidebarCardBox = styled.div`
   background-color: ${THEME.COLORS.WHITE};
   padding: 24px;
-  box-shadow: 0px 6px 24px 0px ${THEME.COLORS.SHADOW};
+  box-shadow: 0px 6px 20px 0px ${THEME.COLORS.SHADOW};
+  -webkit-box-shadow: 0px 6px 20px 0px ${THEME.COLORS.SHADOW};
+  -moz-box-shadow: 0px 6px 20px 0px ${THEME.COLORS.SHADOW};
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
