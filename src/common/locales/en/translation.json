@@ -3,6 +3,13 @@
     "TEST": "TEST LANG DATA",
     "PAGE_TITLES": {
       "HOME": "Products"
+    },
+    "SIDEBAR":{
+      "CARD_TITLES": {
+        "SORTING": "Sorting",
+        "BRANDS": "Brands",
+        "TAGS": "Tags"
+      }
     }
   }
 }

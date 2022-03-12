@@ -8,8 +8,6 @@ function MainSection(props) {
   // Desctruct Props
   const { children } = props;
 
-  console.log('history', props);
-
   return (
     <StyledMainSection>
       <PageTitle />
