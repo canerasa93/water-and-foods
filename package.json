@@ -13,9 +13,11 @@
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
     "format": "prettier --write .ts,.tsx,.js,.jsx,.json .",
     "tsc": "tsc",
-    "tsc:watch": "tsc --watch"
+    "tsc:watch": "tsc --watch",
+    "svgr": "svgr ./src/assets/icons -d ./src/components/Icons --icon"
   },
   "dependencies": {
+    "@svgr/cli": "^6.2.1",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
