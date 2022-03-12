@@ -7,7 +7,8 @@ import {
   StyledProductCardImgWrapper,
   StyledProductCardImg,
   StyledProductPrice,
-  StyledProductTitle
+  StyledProductTitle,
+  StyledProductCardFigure
 } from './_productCardStyle';
 
 // Import Components
@@ -19,7 +20,9 @@ function ProductCard() {
     <StyledProductCard>
       {/* Product Image */}
       <StyledProductCardImgWrapper>
-        <StyledProductCardImg />
+        <StyledProductCardFigure>
+          <StyledProductCardImg src="https://cdn.getir.com/product/62027c5488f0422d9d19ae30_tr_1646806460006.jpeg" alt="Space Shuttle" />
+        </StyledProductCardFigure>
       </StyledProductCardImgWrapper>
       {/* Product Price */}
       <StyledProductPrice>{getFormattedAmount(14.99)}</StyledProductPrice>

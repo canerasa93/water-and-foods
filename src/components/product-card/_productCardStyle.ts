@@ -17,12 +17,27 @@ export const StyledProductCardImgWrapper = styled.div`
   border-radius: 12px;
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
+  overflow: hidden;
 `;
 
-export const StyledProductCardImg = styled.div`
+export const StyledProductCardFigure = styled.figure`
   width: 100%;
   height: 92px;
-  background: #c4c4c4;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 0;
+  padding: 0;
+`;
+
+export const StyledProductCardImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  background: transparent;
 `;
 
 export const StyledProductPrice = styled.span`
