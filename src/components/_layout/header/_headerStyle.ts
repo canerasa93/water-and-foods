@@ -45,5 +45,5 @@ export const StyledBasketTotalPrice = styled.span`
   font-size: 14px;
   font-weight: ${THEME.FONT.SEMIBOLD};
   line-height: 16px;
-  margin-left: 10px;
+  margin-left: 5px;
 `;

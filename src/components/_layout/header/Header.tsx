@@ -1,9 +1,9 @@
-// Import Components
-import SvgBasket from 'src/components/icons/Basket';
-import Container from '../container/Container';
-
 // Import Utils
 import { getFormattedAmount } from 'src/common/utils/amount/amountUtil';
+
+// Import Constants
+import { ICON_LIST } from 'src/common/constants/icon/iconList';
+import { ICON_STATUS } from 'src/common/constants/icon/iconStatus';
 
 // Import Styled Components
 import {
@@ -14,7 +14,9 @@ import {
   StyledBasketTotalPrice
 } from './_headerStyle';
 
-
+// Import Components
+import Container from '../container/Container';
+import CustomIcon from 'src/components/custom-icon/CustomIcon';
 
 function Header() {
   // Variables
@@ -27,7 +29,7 @@ function Header() {
           <StyledLogo href={'/'} rel="noreferrer" />
         </StyledHeaderCenter>
         <StyledHeaderRight>
-          <SvgBasket />
+          <CustomIcon name={ICON_LIST.BASKET} status={ICON_STATUS.WHITE} />
           <StyledBasketTotalPrice>{totalPrice}</StyledBasketTotalPrice>
         </StyledHeaderRight>
       </Container>
