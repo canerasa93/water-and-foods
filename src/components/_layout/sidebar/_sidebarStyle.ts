@@ -8,3 +8,9 @@ export const StyledSidebar = styled.aside`
   max-width: 300px;
   display: flex;
 `;
+
+export const StyledSidebarRight = styled.aside`
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+`;
