@@ -1,3 +1,18 @@
+### Gereksinimler
+
+- Commit atmadan önce çalışan pre-commit hookları için ihytiyaç duyacağımız Prettier, Eslint ve Typescript paketlerini aşağıdaki komutları kullanarak global olarak bilgisayara yüklüyoruz.
+
+npm install --global prettier
+npm install -g eslint
+npm install typescript -g
+npm install -g babel-eslint
+npm install -g json-server
+
+- VS Code IDE'sinde code format için
+  [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) eklentisini kullanacağız.
+  [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) ve
+  [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) eklentileri, geliştirme esnasında lint uyarı ve hatalarını görüntülemek için kullanılacaktır. Kullandığınız IDE'ye bu eklentileri kurmalısınız.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -9,10 +24,14 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `npm dev`
+
+### `npm mock`
 
 ### `npm test`
 
@@ -31,13 +50,13 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 
