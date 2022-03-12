@@ -6,6 +6,8 @@ export const THEME = {
     GRAY_1: '#FAFAFA',
     GRAY_2: '#6F6F6F',
     GRAY_3: '#697488',
+    GRAY_4: '#F2F0FD',
+    GRAY_5: '#e1e0e9',
     // BLUES
     BLUE_1: '#1EA4CE',
     BLUE_2: '#147594',
