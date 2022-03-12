@@ -6,8 +6,7 @@ import { THEME } from 'src/common/constants/theme';
 
 // Styled Components
 export const StyledPageTitleWrapper = styled.div`
-  flex: 1;
-  flex-direction: row;
+  margin-bottom: 20px;
 `;
 
 export const StyledPageTitle = styled.h1`

@@ -1,5 +1,5 @@
 // Import Styled Components
-import { StyledMainSection } from './_mainSectionStyle';
+import { StyledMainSection, StyledSectionChildren } from './_mainSectionStyle';
 
 // Import Components
 import PageTitle from 'src/components/page-title/PageTitle';
@@ -11,7 +11,7 @@ function MainSection(props) {
   return (
     <StyledMainSection>
       <PageTitle />
-      {children}
+      <StyledSectionChildren>{children}</StyledSectionChildren>
     </StyledMainSection>
   );
 }

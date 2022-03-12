@@ -8,3 +8,7 @@ export const StyledMainSection = styled.section`
   flex-direction: column;
   margin: 0 15px;
 `;
+
+export const StyledSectionChildren = styled.div`
+  display: block;
+`;
