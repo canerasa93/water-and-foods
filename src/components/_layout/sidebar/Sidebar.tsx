@@ -1,12 +1,8 @@
 // Import Styled Components
-import {
-    StyledSidebar
-  } from './_sidebarStyle';
+import { StyledSidebar } from './_sidebarStyle';
 
 function Sidebar() {
-  return (
-    <StyledSidebar>Sidebar</StyledSidebar>
-  )
+  return <StyledSidebar>Sidebar</StyledSidebar>;
 }
 
-export default Sidebar
+export default Sidebar;

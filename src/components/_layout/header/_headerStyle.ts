@@ -7,7 +7,6 @@ import { THEME } from 'src/common/constants/theme';
 // Import Assets
 import logo from 'src/assets/images/logo.png';
 
-
 // Styled Components
 export const StyledHeader = styled.div`
   flex: 1;

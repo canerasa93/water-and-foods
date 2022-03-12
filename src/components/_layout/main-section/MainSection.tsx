@@ -10,7 +10,7 @@ function MainSection(props) {
 
   console.log('history', props);
 
-  return(
+  return (
     <StyledMainSection>
       <PageTitle />
       {children}

@@ -20,11 +20,7 @@ function Home() {
     console.log('testdata', testdata);
   }, [testdata]);
 
-  return (
-    <>
-      {testdata?.[0]?.name}
-    </>
-  );
+  return <>{testdata?.[0]?.name}</>;
 }
 
 export default Home;

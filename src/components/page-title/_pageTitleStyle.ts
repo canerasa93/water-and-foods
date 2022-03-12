@@ -10,7 +10,7 @@ export const StyledPageTitleWrapper = styled.div`
   flex-direction: row;
 `;
 
-export const StyledPageTitle= styled.h1`
+export const StyledPageTitle = styled.h1`
   font-size: 20px;
   font-weight: ${THEME.FONT.REGULAR};
   color: ${THEME.COLORS.GRAY_2};
