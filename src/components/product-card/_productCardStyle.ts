@@ -6,8 +6,10 @@ import { THEME } from 'src/common/constants/theme';
 
 // Styled Components
 export const StyledProductCard = styled.div`
-  width: calc(50% - 10px);
+  width: calc(25% - 20px);
   padding: 10px;
+  display: inline-flex;
+  flex-direction: column;
 `;
 export const StyledProductCardImgWrapper = styled.div`
   border: 1.8px solid ${THEME.COLORS.SHADOW};

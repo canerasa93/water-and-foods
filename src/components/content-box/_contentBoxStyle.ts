@@ -7,7 +7,7 @@ import { THEME } from 'src/common/constants/theme';
 // Styled Components
 export const StyledContentBox = styled.div`
   background-color: ${THEME.COLORS.WHITE};
-  padding: 20px;
+  padding: 10px;
   box-shadow: 0px 6px 20px 0px ${THEME.COLORS.SHADOW};
   -webkit-box-shadow: 0px 6px 20px 0px ${THEME.COLORS.SHADOW};
   -moz-box-shadow: 0px 6px 20px 0px ${THEME.COLORS.SHADOW};
