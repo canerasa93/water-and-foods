@@ -6,11 +6,12 @@ interface RadioProps {
   label: string;
   id: string;
   handleOnChange?: (val: boolean, id: string) => void;
+  defaultChecked?: boolean;
 }
 
 function Radio(props: RadioProps) {
   // Desctruct Props
-  const { label, name, handleOnChange, id } = props;
+  const { label, name, handleOnChange, id, defaultChecked } = props;
 
   return (
     <StyledRadioWrapper>
@@ -18,6 +19,7 @@ function Radio(props: RadioProps) {
         <StyledRadioInput
           id={id}
           type="radio"
+          defaultChecked={defaultChecked}
           name={name}
           onChange={(e) => handleOnChange && handleOnChange(e?.target?.checked || false, id)}
         />
