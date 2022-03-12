@@ -18,8 +18,8 @@ function ProductList(props: ProductListProps) {
 
   return (
     <StyledProductList>
-      {data?.map((item) => {
-        return <ProductCard {...item} />;
+      {data?.map((item, index) => {
+        return <ProductCard {...item} key={item?.title+index} />;
       })}
     </StyledProductList>
   );

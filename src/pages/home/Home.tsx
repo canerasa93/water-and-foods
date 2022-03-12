@@ -29,7 +29,26 @@ function Home() {
     <Fragment>
       <FilterButtons />
       <ContentBox>
-        <ProductList data={[{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]} />
+        <ProductList
+          data={[
+            { title: 'Test' },
+            { title: 'Test' },
+            { title: 'Test' },
+            { title: 'Test' },
+            { title: 'Test' },
+            { title: 'Test' },
+            { title: 'Test' },
+            { title: 'Test' },
+            { title: 'Test' },
+            { title: 'Test' },
+            { title: 'Test' },
+            { title: 'Test' },
+            { title: 'Test' },
+            { title: 'Test' },
+            { title: 'Test' },
+            { title: 'Test' }
+          ]}
+        />
       </ContentBox>
     </Fragment>
   );

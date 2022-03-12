@@ -27,6 +27,7 @@ function FilterButtons() {
         return (
           <Button
             translated={false}
+            key={filterbutton?.title}
             label={filterbutton?.title}
             margin="0 10px 0 0"
             variant={mod === 0 ? BUTTON_VARIANTS.PRIMARY : BUTTON_VARIANTS.SECONDARY}
