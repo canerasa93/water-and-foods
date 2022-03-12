@@ -5,7 +5,7 @@ import Home from '../../pages/home/Home';
 
 export const routes = [
   {
-    title: 'PAGE_TITLES.HOME',
+    title: 'GLOBAL.PAGE_TITLES.HOME',
     path: '/',
     component: Home
   }
