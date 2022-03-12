@@ -9,6 +9,7 @@ import { test } from 'src/store/actions/test/test';
 // Import Components
 import FilterButtons from 'src/components/filter-buttons/FilterButtons';
 import ContentBox from 'src/components/content-box/ContentBox';
+import ProductList from 'src/components/product-list/ProductList';
 
 function Home() {
   // Store Variables
@@ -27,7 +28,9 @@ function Home() {
   return (
     <Fragment>
       <FilterButtons />
-      <ContentBox>test</ContentBox>
+      <ContentBox>
+        <ProductList data={[{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]} />
+      </ContentBox>
     </Fragment>
   );
 }
