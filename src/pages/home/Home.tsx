@@ -2,9 +2,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-// Import Components
-import TranslatedText from 'src/components/translated-text/TranslatedText';
-
 // Import Store
 import { RootState } from 'src/store/store';
 import { test } from 'src/store/actions/test/test';
@@ -25,8 +22,7 @@ function Home() {
 
   return (
     <>
-      {testdata?.[0]?.name} <br />
-      <TranslatedText label="GLOBAL.TEST" />
+      {testdata?.[0]?.name}
     </>
   );
 }
