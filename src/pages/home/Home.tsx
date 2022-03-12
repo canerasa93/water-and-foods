@@ -25,7 +25,7 @@ function Home() {
 
   return (
     <>
-      {testdata[0]?.name} <br />
+      {testdata?.[0]?.name} <br />
       <TranslatedText label="GLOBAL.TEST" />
     </>
   );
