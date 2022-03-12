@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import translationTR from './tr/translation.json';
+import translationEN from './en/translation.json';
 
 // import Backend from 'i18next-http-backend';
 // import LanguageDetector from 'i18next-browser-languagedetector';
@@ -10,8 +10,8 @@ import translationTR from './tr/translation.json';
 // for passing in lng and translations on init
 
 const resources = {
-  tr: {
-    translation: translationTR
+  en: {
+    translation: translationEN
   }
 };
 
@@ -28,7 +28,7 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     resources,
-    fallbackLng: 'tr',
+    fallbackLng: 'en',
     debug: false,
 
     interpolation: {
