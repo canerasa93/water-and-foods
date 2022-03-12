@@ -1,17 +1,23 @@
 // Import Styled Components
-import { StyledCheckboxWrapper, StyledCheckboxLabel, StyledCheckboxInput } from './_checkboxStyle';
+import {
+  StyledCheckboxWrapper,
+  StyledCheckboxLabel,
+  StyledCheckboxInput,
+  StyledCheckboxLabelCount
+} from './_checkboxStyle';
 
 interface CheckboxProps {
   name: string;
   label: string;
   id: string;
+  count: number;
   defaultChecked?: boolean;
   handleOnChange?: (val: boolean, name: string) => void;
 }
 
 function Checkbox(props: CheckboxProps) {
   // Desctruct Props
-  const { label, name, handleOnChange, id, defaultChecked } = props;
+  const { label, name, handleOnChange, id, defaultChecked, count } = props;
 
   return (
     <StyledCheckboxWrapper>
@@ -23,7 +29,10 @@ function Checkbox(props: CheckboxProps) {
           defaultChecked={defaultChecked}
           onChange={(e) => handleOnChange && handleOnChange(e?.target?.checked || false, name)}
         />
-        <StyledCheckboxLabel htmlFor={id}>{label}</StyledCheckboxLabel>
+        <StyledCheckboxLabel htmlFor={id}>
+          {label}
+          <StyledCheckboxLabelCount>({count})</StyledCheckboxLabelCount>
+        </StyledCheckboxLabel>
       </div>
     </StyledCheckboxWrapper>
   );

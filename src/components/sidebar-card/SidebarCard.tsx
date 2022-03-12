@@ -39,7 +39,6 @@ function SidebarCard(props: SidebarCardProps) {
   const { title, scrollable, data } = props;
 
   const staticSearch = () => {
-
     if (data && data?.length && isArray(data)) {
       const filter = data?.filter((filterItem) =>
         [filterItem?.label]?.some((item) => !!item && removeAccents(item)?.includes(removeAccents(searchData)))
@@ -70,6 +69,7 @@ function SidebarCard(props: SidebarCardProps) {
             staticSearch()?.map((item, index) => {
               return scrollable ? (
                 <Checkbox
+                  count={item?.count}
                   id={item?.id}
                   name={item?.title}
                   label={item?.label}

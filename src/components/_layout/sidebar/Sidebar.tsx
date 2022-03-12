@@ -41,22 +41,26 @@ const staticSidebarBoxes = [
       {
         name: 'all',
         label: 'All',
-        id: 'all'
+        id: 'all',
+        count: 5
       },
       {
         name: 'all',
         label: 'gizem',
-        id: 'gize'
+        id: 'gize',
+        count: 5
       },
       {
         name: 'memo',
         label: 'memo',
-        id: 'memo'
+        id: 'memo',
+        count: 5
       },
       {
         name: 'caner',
         label: 'caner',
-        id: 'caner'
+        id: 'caner',
+        count: 5
       }
     ]
   },
@@ -67,27 +71,35 @@ const staticSidebarBoxes = [
       {
         name: 'all_tags',
         label: 'All',
-        id: 'all_tags'
+        id: 'all_tags',
+        count: 5
+
       },
       {
         name: 'asagizem',
         label: 'asagizem',
-        id: 'asagizem'
+        id: 'asagizem',
+        count: 5
+
       },
       {
         name: 'asacaner',
         label: 'giasacaner',
-        id: 'asacanere'
+        id: 'asacanere',
+        count: 5
+
       },
       {
         name: 'dilmenmemo',
         label: 'dilmenmemo',
-        id: 'dilmenmemo'
+        id: 'dilmenmemo',
+        count: 5
       },
       {
         name: 'atman',
         label: 'atman',
-        id: 'atman'
+        id: 'atman',
+        count: 5
       }
     ]
   }

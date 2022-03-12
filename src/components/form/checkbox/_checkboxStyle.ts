@@ -13,7 +13,6 @@ export const StyledCheckboxWrapper = styled.div`
   display: block;
   margin-bottom: 16px;
 `;
-
 export const StyledCheckboxLabel = styled.label`
   cursor: pointer;
   display: inline-block;
@@ -45,4 +44,11 @@ export const StyledCheckboxInput = styled.input.attrs({ type: 'checkbox' })`
       }
     }
   }
+`;
+
+export const StyledCheckboxLabelCount = styled.span`
+  margin-left: 5px;
+  color: ${THEME.COLORS.GRAY_7};
+  font-size: 14px;
+  font-weight: ${THEME.FONT.REGULAR};
 `;
