@@ -8,20 +8,23 @@ function Sidebar() {
   // Variables
   const staticSidebarBoxes = [
     {
-      title: 'SORTING'
+      title: 'SORTING',
+      scrollable: false
     },
     {
-      title: 'BRANDS'
+      title: 'BRANDS',
+      scrollable: true
     },
     {
-      title: 'TAGS'
+      title: 'TAGS',
+      scrollable: true
     }
   ];
 
   return (
     <StyledSidebar>
       {staticSidebarBoxes?.map((sidebarItem) => (
-        <SidebarCard title={sidebarItem.title} key={sidebarItem.title} />
+        <SidebarCard {...sidebarItem} key={sidebarItem.title} />
       ))}
     </StyledSidebar>
   );

@@ -18,6 +18,16 @@ export const StyledSidebarCardBox = styled.div`
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
+  word-wrap: break-all;
+  overflow: hidden;
+`;
+
+export const StyledSidebarCardBoxContainer = styled.div`
+  word-wrap: break-all;
+  overflow: hidden;
+  overflow-y: ${(props) => (props.scrollable ? 'auto' : 'hidden')};
+  height: ${(props) => (props.scrollable ? '140px' : 'auto')};
+  max-height: ${(props) => (props.scrollable ? '140px' : 'auto')};
 `;
 
 export const StyledSidebarCardTitle = styled.span`
