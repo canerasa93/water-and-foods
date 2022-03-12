@@ -33,10 +33,12 @@ export const StyledHeaderRight = styled.div`
   flex-direction: row;
   padding: 0 30px;
   height: 100%;
-  background-color: red;
   align-items: center;
   justify-content: center;
   background-color: ${THEME.COLORS.BLUE_2};
+  position: absolute;
+  right: 0;
+  top: 0;
 `;
 
 export const StyledBasketTotalPrice = styled.span`

@@ -12,4 +12,5 @@ export const StyledCenterContent = styled.div`
   max-width: 1232px;
   width: 100%;
   display: flex;
+  position: relative;
 `;
