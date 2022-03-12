@@ -9,6 +9,12 @@
         "ADD": "Add"
       }
     },
+    "FORM_ELEMENTS": {
+      "PLACEHOLDERS": {
+        "BRANDS": "Search brand",
+        "TAGS": "Search tag"
+      }
+    },
     "SIDEBAR": {
       "CARD_TITLES": {
         "SORTING": "Sorting",

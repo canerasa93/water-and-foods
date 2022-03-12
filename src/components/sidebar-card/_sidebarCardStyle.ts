@@ -23,11 +23,11 @@ export const StyledSidebarCardBox = styled.div`
 `;
 
 export const StyledSidebarCardBoxContainer = styled.div`
-  word-wrap: break-all;
   overflow: hidden;
   overflow-y: ${(props) => (props.scrollable ? 'auto' : 'hidden')};
   height: ${(props) => (props.scrollable ? '140px' : 'auto')};
   max-height: ${(props) => (props.scrollable ? '140px' : 'auto')};
+  margin-top: ${(props) => (props.search ? '17px' : '0px')};
 `;
 
 export const StyledSidebarCardTitle = styled.span`

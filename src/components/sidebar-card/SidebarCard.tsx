@@ -8,12 +8,13 @@ import {
 
 // Import Components
 import TranslatedText from '../translated-text/TranslatedText';
+import Input from '../form/input/Input';
 
 interface SidebarCardProps {
   title: string;
   search?: boolean;
   data?: Array<any>;
-  scrollable: boolean;
+  scrollable?: boolean;
 }
 
 SidebarCard.defaultProps = {
@@ -24,7 +25,7 @@ SidebarCard.defaultProps = {
 
 function SidebarCard(props: SidebarCardProps) {
   // Desctruct Props
-  const { title, scrollable } = props;
+  const { title, scrollable, search } = props;
 
   return (
     <StyledSidebarCard>
@@ -32,7 +33,9 @@ function SidebarCard(props: SidebarCardProps) {
         <TranslatedText label={'GLOBAL.SIDEBAR.CARD_TITLES.' + title} />
       </StyledSidebarCardTitle>
       <StyledSidebarCardBox>
-        <StyledSidebarCardBoxContainer scrollable={scrollable}>
+        {search && <Input placeholder={'GLOBAL.FORM_ELEMENTS.PLACEHOLDERS.' + title} name="search" />}
+
+        <StyledSidebarCardBoxContainer scrollable={scrollable} search={search}>
           test tes ttest te stte sttesttest testt es ttes ttest testte stte sttest
         </StyledSidebarCardBoxContainer>
       </StyledSidebarCardBox>

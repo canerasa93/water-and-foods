@@ -9,15 +9,18 @@ function Sidebar() {
   const staticSidebarBoxes = [
     {
       title: 'SORTING',
-      scrollable: false
+      scrollable: false,
+      search: false
     },
     {
       title: 'BRANDS',
-      scrollable: true
+      scrollable: true,
+      search: true
     },
     {
       title: 'TAGS',
-      scrollable: true
+      scrollable: true,
+      search: true
     }
   ];
 
