@@ -21,31 +21,19 @@ function Home() {
   // Store Variables
   const dispatch = useDispatch();
   const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success?.filtered);
+  const getProductsDataOrigin = useSelector((state: RootState) => state?.productsReducer?.success?.origin);
   const getMainStoreData = useSelector((state: RootState) => state?.globalReducer?.success);
 
-  useEffect(() => {
-    // Get Products on Load
-    dispatch(getProducts());
+  const filterProductOriginByTab = (filterParam) => {
+    const filtered = getProductsDataOrigin?.filter((item) => item?.itemType === filterParam);
 
-    // Set Default Filter Parameters
-    dispatch({
-      type: types.SUCCESS,
-      payload: {
-        filterParams: {
-          filterButton: '',
-          brands: ['all'],
-          tags: ['all_tags'],
-          page: 0,
-          sorting: 'lth'
-        }
-      }
-    });
-  }, []);
+    return filtered;
+  };
 
   const filterFunction = (filterName, filteredData) => {
     getMainStoreData?.filterParams?.[`${filterName}`]?.map((param) => {
       if (param !== 'all' || param !== 'all_tags') {
-        getProductsData?.map((productItem) => {
+        filterProductOriginByTab(getMainStoreData?.filterParams?.filterButton)?.map((productItem) => {
           if (filterName === 'brands') {
             if (removeAccents(productItem?.manufacturer) === removeAccents(param)) {
               filteredData.push(productItem);
@@ -75,6 +63,9 @@ function Home() {
     // Tags Filter
     filterFunction('tags', filteredData);
 
+
+    console.log('filteredData: ', getUniqueListBy(filteredData, 'name'));
+
     dispatch({
       type: types.PRODUCT_LIST_UPDATE,
       payload: getUniqueListBy(filteredData, 'name')
@@ -84,6 +75,25 @@ function Home() {
   useEffect(() => {
     getMainStoreData && getProductsData && makeFilter();
   }, [getMainStoreData]);
+
+  useEffect(() => {
+    // Get Products on Load
+    dispatch(getProducts());
+
+    // Set Default Filter Parameters
+    dispatch({
+      type: types.SUCCESS,
+      payload: {
+        filterParams: {
+          filterButton: 'mug',
+          brands: ['all'],
+          tags: ['all_tags'],
+          page: 0,
+          sorting: 'lth'
+        }
+      }
+    });
+  }, []);
 
   return (
     <Fragment>
