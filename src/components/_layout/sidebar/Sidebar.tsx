@@ -45,7 +45,6 @@ function Sidebar() {
 
   // Store Variables
   const dispatch = useDispatch();
-
   let getCompaniesData = useSelector((state: RootState) => state?.globalReducer?.success?.data.companies);
 
   //This function analyze incoming data and analyze according to needs (re-format data for filters)
@@ -89,6 +88,9 @@ function Sidebar() {
 
       {/* BRANDS */}
       <SidebarCard title={'BRANDS'} scrollable={true} data={brandsData} />
+
+      {/* TAGS */}
+      <SidebarCard title={'TAGS'} scrollable={true} data={brandsData} />
     </StyledSidebar>
   );
 }
