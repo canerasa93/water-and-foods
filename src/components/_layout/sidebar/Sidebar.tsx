@@ -162,8 +162,6 @@ function Sidebar() {
       sortedData = sortDateDescByKey(getProductsData, 'added');
     }
 
-    console.log('sortedData :>> ', sortedData);
-
     dispatch({
       type: types.SUCCESS,
       payload: {
