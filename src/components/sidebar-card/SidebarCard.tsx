@@ -19,8 +19,6 @@ import Input from '../form/input/Input';
 import Checkbox from '../form/checkbox/Checkbox';
 import Radio from '../form/radio/Radio';
 
-
-
 interface SidebarCardProps {
   title: string;
   data: Array<Record<string, string | number>>;
@@ -43,7 +41,9 @@ function SidebarCard(props: SidebarCardProps) {
   const staticSearch = () => {
     if (data && data?.length && isArray(data)) {
       const filter = data?.filter((filterItem) =>
-        [filterItem?.label]?.some((item) => !!item && removeAccents(item.toString())?.includes(removeAccents(searchData)))
+        [filterItem?.label]?.some(
+          (item) => !!item && removeAccents(item.toString())?.includes(removeAccents(searchData))
+        )
       );
 
       return filter?.length ? filter : searchData ? [] : data;

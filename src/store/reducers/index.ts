@@ -9,7 +9,7 @@ const reducers = {
   companiesReducer,
   productsReducer,
   tagsReducer,
-  typesReducer,
+  typesReducer
 };
 
 export default reducers;

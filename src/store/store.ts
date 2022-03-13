@@ -9,7 +9,6 @@ const devTools =
     ? window && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
     : (f) => f;
 
-
 const enhancer = compose(applyMiddleware(ReduxThunk), devTools);
 const store = createStore(reducer, enhancer);
 

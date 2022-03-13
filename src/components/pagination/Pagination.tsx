@@ -35,7 +35,7 @@ function Pagination() {
             <StyledPaginationNumber>4</StyledPaginationNumber>
           </Fragment>
           <Fragment>
-          <StyledPaginationDots>...</StyledPaginationDots>
+            <StyledPaginationDots>...</StyledPaginationDots>
           </Fragment>
           <Fragment>
             <StyledPaginationNumber>17</StyledPaginationNumber>

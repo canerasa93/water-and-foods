@@ -44,7 +44,6 @@ export const StyledControlLabel = styled.span`
   font-weight: ${THEME.FONT.SEMIBOLD};
   font-size: 14px;
   margin: 0 14px;
-  
 `;
 
 export const StyledPaginationDots = styled.span`

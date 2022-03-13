@@ -28,7 +28,7 @@ export const StyledSidebarCardBoxContainer = styled.div`
   height: ${(props) => (props.scrollable ? '140px' : 'auto')};
   max-height: ${(props) => (props.scrollable ? '140px' : 'auto')};
   margin-top: ${(props) => (props.scrollable ? '17px' : '0px')};
-  padding-top:${(props) => (props.scrollable ? '5px' : '0px')};
+  padding-top: ${(props) => (props.scrollable ? '5px' : '0px')};
 `;
 
 export const StyledSidebarCardTitle = styled.span`

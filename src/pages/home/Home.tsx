@@ -26,7 +26,7 @@ function Home() {
     <Fragment>
       <FilterButtons />
       <ContentBox>
-        <ProductList data={ arrayToPaginate(getProductsData, 16)?.[0]} />
+        <ProductList data={arrayToPaginate(getProductsData, 16)?.[0]} />
       </ContentBox>
 
       <Pagination />
