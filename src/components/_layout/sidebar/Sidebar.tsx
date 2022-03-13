@@ -9,6 +9,7 @@ import { StyledSidebar } from './_sidebarStyle';
 import { getCompanies } from 'src/store/actions/companies/getCompanies';
 import { getTags } from 'src/store/actions/tags/getTags';
 import { RootState } from 'src/store/store';
+import * as types from 'src/store/action-types/types';
 
 // Import Components
 import SidebarCard from 'src/components/sidebar-card/SidebarCard';
@@ -47,10 +48,29 @@ function Sidebar() {
   const getCompaniesData = useSelector((state: RootState) => state?.companiesReducer?.success);
   const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success?.filtered);
   const getTagsData = useSelector((state: RootState) => state?.tagsReducer?.success);
+  const getMainStoreData = useSelector((state: RootState) => state?.globalReducer?.success);
 
-  // Handle Brands Checkbox Change
-  const handleBrandsChange = (value: boolean, id: string) => {
-    console.log(id + ':' + value);
+  // Handle Checkbox Change on Filter
+  const handleFilterCheckboxChange = (value: boolean, id: string, filterName: string) => {
+    let data = getMainStoreData.filterParams[`${filterName}`];
+    if (value) {
+      data = [...data, ...[id]];
+    } else {
+      data = data?.filter((b) => b !== id);
+    }
+
+    dispatch({
+      type: types.SUCCESS,
+      payload: {
+        filterParams: {
+          filterButton: getMainStoreData.filterParams.filterButton,
+          brands: filterName === 'brands' ? data : getMainStoreData.filterParams.brands,
+          tags: filterName === 'tags' ? data : getMainStoreData.filterParams.tags,
+          page: getMainStoreData.filterParams.page,
+          sorting: getMainStoreData.filterParams.sorting
+        }
+      }
+    });
   };
 
   // Get Companies on Load Action
@@ -68,10 +88,20 @@ function Sidebar() {
       <SidebarCard {...filterData} />
 
       {/* BRANDS */}
-      <SidebarCard title={'BRANDS'} scrollable={true} data={getCompaniesData} handleOnChange={handleBrandsChange} />
+      <SidebarCard
+        title={'BRANDS'}
+        scrollable={true}
+        data={getCompaniesData}
+        handleOnChange={(value: boolean, id: string) => handleFilterCheckboxChange(value, id, 'brands')}
+      />
 
       {/* TAGS */}
-      <SidebarCard title={'TAGS'} scrollable={true} data={getTagsData} />
+      <SidebarCard
+        title={'TAGS'}
+        scrollable={true}
+        data={getTagsData}
+        handleOnChange={(value: boolean, id: string) => handleFilterCheckboxChange(value, id, 'tags')}
+      />
     </StyledSidebar>
   );
 }
