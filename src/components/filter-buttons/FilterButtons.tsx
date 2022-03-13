@@ -26,27 +26,30 @@ function FilterButtons() {
   const getTypesData = useSelector((state: RootState) => state?.typesReducer?.success);
   const getMainStoreData = useSelector((state: RootState) => state?.globalReducer?.success);
 
-  // Handle Click on Filter
-  const filterOnClick = (title) => {
-    setActiveTab(title);
-
-    let newFilterData = getMainStoreData;
-
-    newFilterData['filterParams']['filterButton'] = title;
-
-    dispatch({
-      type: types.SUCCESS,
-      payload: newFilterData
-    });
-
-    const filtered = getProductsData?.filter(
-      (item) => item?.itemType === newFilterData['filterParams']['filterButton']
-    );
+  // Set Product Filter Function by Selected Active Tab
+  const filterProductOriginByTab = (filterParam) => {
+    const filtered = getProductsData?.filter((item) => item?.itemType === filterParam);
 
     dispatch({
       type: types.PRODUCT_LIST_UPDATE,
       payload: filtered
     });
+  };
+
+  // Handle Click on Filter
+  const filterOnClick = (title) => {
+    // Active Key
+    setActiveTab(title);
+
+    // Set Global Filter Params to store
+    getMainStoreData['filterParams']['filterButton'] = title;
+    dispatch({
+      type: types.SUCCESS,
+      payload: getMainStoreData
+    });
+
+    //Apply Filter
+    filterProductOriginByTab(title);
   };
 
   // Get Types from Product Data and set To
@@ -56,7 +59,10 @@ function FilterButtons() {
 
   // Set Active Tab on Load
   useEffect(() => {
-    getTypesData && setActiveTab(getTypesData?.[0]?.title);
+    getTypesData &&
+      (setActiveTab(getTypesData?.[0]?.title),
+      // Apply Default Filter on Load
+      filterProductOriginByTab(getTypesData?.[0]?.title));
   }, [getTypesData]);
 
   return (
