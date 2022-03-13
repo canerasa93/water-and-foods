@@ -1,4 +1,4 @@
-import * as types from '../action-types/types';
+import * as types from 'src/store/action-types/types';
 
 const initialState = {
   isLoading: false,

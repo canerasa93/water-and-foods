@@ -1,8 +1,8 @@
+import companiesReducer from './companies/companiesReducer';
 import globalReducer from './globalReducer';
-import companiesReducer from './companiesReducer';
-import productsReducer from './productsReducer';
-import tagsReducer from './tagsReducer';
-import typesReducer from './typesReducer';
+import productsReducer from './products/productsReducer';
+import tagsReducer from './tags/tagsReducer';
+import typesReducer from './types/typesReducer';
 
 const reducers = {
   globalReducer,

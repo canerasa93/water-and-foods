@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BUTTON_VARIANTS } from 'src/common/constants/button/buttonConstants';
 
 // Import Store
-import { getTypes } from 'src/store/actions/filer-types/getTypes';
+import { getTypes } from 'src/store/actions/types/getTypes';
 import { RootState } from 'src/store/store';
 
 // Import Styled Commponents
