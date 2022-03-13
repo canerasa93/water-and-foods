@@ -18,6 +18,7 @@ function Home() {
   // Store Variables
   const dispatch = useDispatch();
   const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success);
+  const getMainStoreData = useSelector((state: RootState) => state?.globalReducer?.success);
 
   useEffect(() => {
     // Get Products on Load
@@ -30,7 +31,8 @@ function Home() {
         filterParams: {
           filterButton: '',
           brands: [],
-          tags: []
+          tags: [],
+          page: 0
         }
       }
     });
@@ -40,7 +42,7 @@ function Home() {
     <Fragment>
       <FilterButtons />
       <ContentBox>
-        <ProductList data={arrayToPaginate(getProductsData, 16)?.[0]} />
+        <ProductList data={arrayToPaginate(getProductsData, 16)?.[getMainStoreData?.filterParams?.page]} />
       </ContentBox>
 
       <Pagination />
