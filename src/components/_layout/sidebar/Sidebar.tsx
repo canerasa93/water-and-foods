@@ -5,6 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 // Import Styled Components
 import { StyledSidebar } from './_sidebarStyle';
 
+// Import Utils
+import { removeAccents } from 'src/common/utils/string/stringUtils';
+import { getUniqueListBy } from 'src/common/utils/array/arrayUtils';
+
 // Import Store
 import { getCompanies } from 'src/store/actions/companies/getCompanies';
 import { getTags } from 'src/store/actions/tags/getTags';
@@ -49,12 +53,62 @@ function Sidebar() {
   const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success?.filtered);
   const getTagsData = useSelector((state: RootState) => state?.tagsReducer?.success);
   const getMainStoreData = useSelector((state: RootState) => state?.globalReducer?.success);
+  const getProductsDataOrigin = useSelector((state: RootState) => state?.productsReducer?.success?.origin);
+
+  const filterProductOriginByTab = (filterParam) => {
+    const filtered = getProductsDataOrigin?.filter((item) => item?.itemType === filterParam);
+
+    return filtered;
+  };
+
+  const filterFunction = (filterName, filteredData, id, value) => {
+    const currentTabData = filterProductOriginByTab(getMainStoreData?.filterParams?.filterButton);
+    let currentFilterParams = value
+      ? [...getMainStoreData?.filterParams?.[`${filterName}`], ...[id]]
+      : getMainStoreData?.filterParams?.[`${filterName}`];
+
+    if (!value) {
+      currentFilterParams = currentFilterParams.filter((i) => i !== id);
+    }
+
+    if (id !== 'all' && id !== 'all_tags') {
+      currentFilterParams?.map((param) => {
+        currentTabData?.map((productItem) => {
+          if (filterName === 'brands') {
+            if (removeAccents(productItem?.manufacturer) === removeAccents(param)) {
+              filteredData.push(productItem);
+            }
+          } else if (filterName === 'tags') {
+            productItem?.tags?.map((tagItem) => {
+              if (removeAccents(tagItem) === removeAccents(param)) {
+                filteredData.push(productItem);
+              }
+            });
+          }
+        });
+      });
+    }
+  };
+
+  const makeFilter = (filterName, id, value) => {
+    let filteredData: Array<Record<string, string | number | Array<string>>> = [];
+
+    // Filter
+    filterFunction(filterName, filteredData, id, value);
+
+    console.log('filteredData: ', getUniqueListBy(filteredData, 'name'));
+
+    dispatch({
+      type: types.PRODUCT_LIST_UPDATE,
+      payload: getUniqueListBy(filteredData, 'name')
+    });
+  };
 
   // Handle Checkbox Change on Filter
   const handleFilterCheckboxChange = (value: boolean, id: string, filterName: string) => {
     let data = getMainStoreData.filterParams[`${filterName}`];
 
-    if (id !== 'all') {
+    if (id !== 'all' && id !== 'all_tags') {
       if (value) {
         data = [...data, ...[id]];
         data = data?.filter((b) => b !== 'all' && b !== 'all_tags');
@@ -65,9 +119,9 @@ function Sidebar() {
           data = filterName === 'brands' ? [...data, ...['all']] : [...data, ...['all_tags']];
         }
       }
-    } else {
-    }
 
+      makeFilter(filterName, id, value);
+    }
     dispatch({
       type: types.SUCCESS,
       payload: {
@@ -84,6 +138,18 @@ function Sidebar() {
 
   // Handle Checkbox Change on Filter
   const handleFilterRadioChange = (id: string) => {
+    // let sortedData = getProductsData;
+
+    if (id === filterData.data[0].id) {
+      //Price low to high
+    } else if (id === filterData.data[1].id) {
+      //Price high to low
+    } else if (id === filterData.data[2].id) {
+      // New to old
+    } else {
+      // Old to new
+    }
+
     dispatch({
       type: types.SUCCESS,
       payload: {
