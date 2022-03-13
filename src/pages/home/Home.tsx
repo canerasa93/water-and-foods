@@ -42,13 +42,6 @@ function Home() {
     });
   }, []);
 
-  // id: "Tasty-River-Mug-1"
-  // itemType: "mug"
-  // name: "Tasty-River-Mug-1"
-  // price: 9.99
-  // tags: (3) ['River', 'Fog', 'Rocks']
-  // title: "Tasty River Mug"
-
   const filterFunction = (filterName, filteredData) => {
     getMainStoreData?.filterParams?.[`${filterName}`]?.map((param) => {
       if (param !== 'all' || param !== 'all_tags') {
