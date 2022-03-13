@@ -12,7 +12,7 @@ interface CheckboxProps {
   id: string;
   count: number;
   defaultChecked?: boolean;
-  handleOnChange?: (val: boolean, name: string) => void;
+  handleOnChange?: (val: boolean, id: string) => void;
 }
 
 function Checkbox(props: CheckboxProps) {
@@ -27,7 +27,7 @@ function Checkbox(props: CheckboxProps) {
           type="checkbox"
           name={name}
           defaultChecked={defaultChecked}
-          onChange={(e) => handleOnChange && handleOnChange(e?.target?.checked || false, name)}
+          onChange={(e) => handleOnChange && handleOnChange(e?.target?.checked || false, id)}
         />
         <StyledCheckboxLabel htmlFor={id}>
           {label}

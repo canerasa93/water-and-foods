@@ -1,5 +1,6 @@
 // Import React
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 // Import Styled Components
 import {
@@ -8,6 +9,9 @@ import {
   StyledSidebarCardBox,
   StyledSidebarCardBoxContainer
 } from './_sidebarCardStyle';
+
+// Import Store
+import { RootState } from 'src/store/store';
 
 // Import Utils
 import { isArray } from 'src/common/utils/array/arrayUtils';
@@ -23,6 +27,7 @@ interface SidebarCardProps {
   title: string;
   data: Array<Record<string, string | number>>;
   scrollable?: boolean;
+  handleOnChange?: (val: boolean, id: string) => void;
 }
 
 SidebarCard.defaultProps = {
@@ -32,11 +37,14 @@ SidebarCard.defaultProps = {
 };
 
 function SidebarCard(props: SidebarCardProps) {
+  // Desctruct Props
+  const { title, scrollable, data, handleOnChange } = props;
+
   // Variables
   const [searchData, setSearchData] = useState('');
 
-  // Desctruct Props
-  const { title, scrollable, data } = props;
+  // Store Variables
+  const getMainStoreData = useSelector((state: RootState) => state?.globalReducer?.success);
 
   const staticSearch = () => {
     if (data && data?.length && isArray(data)) {
@@ -52,10 +60,8 @@ function SidebarCard(props: SidebarCardProps) {
     }
   };
 
-  const handleCheckboxChange = (value, name, index) => {
-    if (index <= 0 && value === 'all') {
-      console.log('name:', name);
-    }
+  const handleCheckboxChange = (value, name) => {
+    handleOnChange && handleOnChange(value, name);
   };
 
   return (
@@ -74,15 +80,19 @@ function SidebarCard(props: SidebarCardProps) {
 
         <StyledSidebarCardBoxContainer scrollable={scrollable}>
           {isArray(data) &&
-            staticSearch()?.map((item, index) => {
+            staticSearch()?.map((item) => {
               return scrollable ? (
                 <Checkbox
                   count={Number(item?.count)}
                   id={item?.id?.toString()}
                   name={title}
                   label={item?.label?.toString()}
-                  defaultChecked={index <= 0 && true}
-                  handleOnChange={(value, name) => handleCheckboxChange(value, name, index)}
+                  defaultChecked={
+                    getMainStoreData &&
+                    getMainStoreData?.['filterParams']?.[`${title?.toLowerCase()}`][0] === item?.id?.toString() &&
+                    true
+                  }
+                  handleOnChange={(value, id) => handleCheckboxChange(value, id)}
                   key={item?.id}
                 />
               ) : (
@@ -90,7 +100,11 @@ function SidebarCard(props: SidebarCardProps) {
                   id={item?.id?.toString()}
                   name={title}
                   label={item?.label?.toString()}
-                  defaultChecked={index <= 0 && true}
+                  defaultChecked={
+                    getMainStoreData &&
+                    getMainStoreData?.['filterParams']?.[`${title?.toLowerCase()}`][0] === item?.id?.toString() &&
+                    true
+                  }
                   handleOnChange={(value, id) => console.log('value + id radio: ', value + ' ' + id)}
                   key={item.id}
                 />

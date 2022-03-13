@@ -30,9 +30,10 @@ function Home() {
       payload: {
         filterParams: {
           filterButton: '',
-          brands: [],
-          tags: [],
-          page: 0
+          brands: ['all'],
+          tags: ['all_tags'],
+          page: 0,
+          sorting: 'lth'
         }
       }
     });
