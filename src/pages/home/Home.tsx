@@ -44,7 +44,10 @@ function Home() {
 
   const filterFunction = (filterName, filteredData) => {
     getMainStoreData?.filterParams?.[`${filterName}`]?.map((param) => {
+      console.log(param);
       if (param !== 'all' || param !== 'all_tags') {
+
+
         getProductsData?.map((productItem) => {
           if (filterName === 'brands') {
             if (removeAccents(productItem?.manufacturer) === removeAccents(param)) {
@@ -58,11 +61,15 @@ function Home() {
             });
           }
         });
+
       } else {
         getProductsData?.map((productItem) => {
           filteredData.push(productItem);
         });
       }
+
+
+
     });
   };
 
@@ -72,7 +79,7 @@ function Home() {
     // Brands Filter
     filterFunction('brands', filteredData);
 
-    // Brands Filter
+    // Tags Filter
     filterFunction('tags', filteredData);
 
     dispatch({
