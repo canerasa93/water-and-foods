@@ -102,7 +102,7 @@ function SidebarCard(props: SidebarCardProps) {
                   label={item?.label?.toString()}
                   defaultChecked={
                     getMainStoreData &&
-                    getMainStoreData?.['filterParams']?.[`${title?.toLowerCase()}`][0] === item?.id?.toString() &&
+                    getMainStoreData?.['filterParams']?.[`${title?.toLowerCase()}`] === item?.id?.toString() &&
                     true
                   }
                   handleOnChange={(value, id) => console.log('value + id radio: ', value + ' ' + id)}

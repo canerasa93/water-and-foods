@@ -85,7 +85,7 @@ function Sidebar() {
   return (
     <StyledSidebar>
       {/* SORTING */}
-      <SidebarCard {...filterData} />
+      <SidebarCard {...filterData} title="SORTING" />
 
       {/* BRANDS */}
       <SidebarCard
