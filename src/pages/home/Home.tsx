@@ -49,16 +49,12 @@ function Home() {
   // tags: (3) ['River', 'Fog', 'Rocks']
   // title: "Tasty River Mug"
 
-  const makeFilter = () => {
-    let filteredData: Array<Record<string, string | number | Array<string>>> = [];
+  const filterFunction = (filterName, matchId, filteredData) => {
 
-    console.log('brands: ', getMainStoreData?.filterParams?.brands);
-
-    // Brands Filter
-    getMainStoreData?.filterParams?.brands?.map((brand) => {
+    getMainStoreData?.filterParams?.[`${filterName}`]?.map((brand) => {
       if (brand !== 'all') {
         getProductsData?.map((productItem) => {
-          if (removeAccents(productItem?.manufacturer) === removeAccents(brand)) {
+          if (removeAccents(productItem?.[`${matchId}`]) === removeAccents(brand)) {
             filteredData.push(productItem);
           }
         });
@@ -68,6 +64,13 @@ function Home() {
         });
       }
     });
+  };
+
+  const makeFilter = () => {
+    let filteredData: Array<Record<string, string | number | Array<string>>> = [];
+
+    // Brands Filter
+    filterFunction('brands', 'manufacturer', filteredData);
 
     console.log('filteredData: ', filteredData);
   };
