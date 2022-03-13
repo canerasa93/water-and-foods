@@ -22,7 +22,7 @@ function FilterButtons() {
 
   // Store Variables
   const dispatch = useDispatch();
-  const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success);
+  const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success?.origin);
   const getTypesData = useSelector((state: RootState) => state?.typesReducer?.success);
   const getMainStoreData = useSelector((state: RootState) => state?.globalReducer?.success);
 
@@ -32,17 +32,26 @@ function FilterButtons() {
 
     let newFilterData = getMainStoreData;
 
-    newFilterData['filterParams']['filterButton'] = title
+    newFilterData['filterParams']['filterButton'] = title;
 
     dispatch({
       type: types.SUCCESS,
       payload: newFilterData
     });
+
+    const filtered = getProductsData?.filter(
+      (item) => item?.itemType === newFilterData['filterParams']['filterButton']
+    );
+
+    dispatch({
+      type: types.PRODUCT_LIST_UPDATE,
+      payload: filtered
+    });
   };
 
-  // Get Types from Product Data
+  // Get Types from Product Data and set To
   useEffect(() => {
-    getProductsData && dispatch(getTypes(getProductsData));
+    getProductsData && !getTypesData && dispatch(getTypes(getProductsData));
   }, [getProductsData]);
 
   // Set Active Tab on Load

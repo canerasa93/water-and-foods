@@ -48,7 +48,7 @@ function Sidebar() {
   // Store Variables
   const dispatch = useDispatch();
   let getCompaniesData = useSelector((state: RootState) => state?.companiesReducer?.success?.data.companies);
-  const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success);
+  const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success?.filtered);
   const getTagsData = useSelector((state: RootState) => state?.tagsReducer?.success);
 
   // This function analyze incoming data and analyze according to needs (re-format data for filters)
