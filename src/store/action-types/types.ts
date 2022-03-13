@@ -11,5 +11,3 @@ export const COMPANIES_FAIL = 'COMPANIES_FAIL';
 export const COMPANIES_LOADING = 'COMPANIES_LOADING';
 
 export const TAGS_SUCCESS = 'TAGS_SUCCESS';
-export const TAGS_FAIL = 'TAGS_FAIL';
-export const TAGS_LOADING = 'TAGS_LOADING';
