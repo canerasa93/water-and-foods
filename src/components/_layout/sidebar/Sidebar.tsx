@@ -7,7 +7,13 @@ import { StyledSidebar } from './_sidebarStyle';
 
 // Import Utils
 import { removeAccents } from 'src/common/utils/string/stringUtils';
-import { getUniqueListBy } from 'src/common/utils/array/arrayUtils';
+import {
+  getUniqueListBy,
+  sortAscByKey,
+  sortDateAscByKey,
+  sortDateDescByKey,
+  sortDescByKey
+} from 'src/common/utils/array/arrayUtils';
 
 // Import Store
 import { getCompanies } from 'src/store/actions/companies/getCompanies';
@@ -55,12 +61,14 @@ function Sidebar() {
   const getMainStoreData = useSelector((state: RootState) => state?.globalReducer?.success);
   const getProductsDataOrigin = useSelector((state: RootState) => state?.productsReducer?.success?.origin);
 
+  // Get Filtered Data from Selected Tab
   const filterProductOriginByTab = (filterParam) => {
     const filtered = getProductsDataOrigin?.filter((item) => item?.itemType === filterParam);
 
     return filtered;
   };
 
+  // Base Filter Function For Checkboxes
   const filterFunction = (filterName, filteredData, id, value) => {
     const currentTabData = filterProductOriginByTab(getMainStoreData?.filterParams?.filterButton);
     let currentFilterParams = value
@@ -90,6 +98,7 @@ function Sidebar() {
     }
   };
 
+  // Main Filter Function For Checkboxes
   const makeFilter = (filterName, id, value) => {
     let filteredData: Array<Record<string, string | number | Array<string>>> = [];
 
@@ -118,6 +127,7 @@ function Sidebar() {
         }
       }
 
+      // Run Filter for Checkbox
       makeFilter(filterName, id, value);
     }
     dispatch({
@@ -136,17 +146,23 @@ function Sidebar() {
 
   // Handle Checkbox Change on Filter
   const handleFilterRadioChange = (id: string) => {
-    // let sortedData = getProductsData;
+    let sortedData = getProductsData;
 
     if (id === filterData.data[0].id) {
       //Price low to high
+      sortedData = sortAscByKey(getProductsData, 'price');
     } else if (id === filterData.data[1].id) {
       //Price high to low
+      sortedData = sortDescByKey(getProductsData, 'price');
     } else if (id === filterData.data[2].id) {
       // New to old
+      sortedData = sortDateAscByKey(getProductsData, 'added');
     } else {
       // Old to new
+      sortedData = sortDateDescByKey(getProductsData, 'added');
     }
+
+    console.log('sortedData :>> ', sortedData);
 
     dispatch({
       type: types.SUCCESS,
