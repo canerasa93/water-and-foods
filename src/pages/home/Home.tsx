@@ -42,20 +42,27 @@ function Home() {
     });
   }, []);
 
-  //   id: "Tasty-River-Mug-1"
+  // id: "Tasty-River-Mug-1"
   // itemType: "mug"
   // name: "Tasty-River-Mug-1"
   // price: 9.99
   // tags: (3) ['River', 'Fog', 'Rocks']
   // title: "Tasty River Mug"
 
-  const filterFunction = (filterName, matchId, filteredData) => {
-
-    getMainStoreData?.filterParams?.[`${filterName}`]?.map((brand) => {
-      if (brand !== 'all') {
+  const filterFunction = (filterName, filteredData) => {
+    getMainStoreData?.filterParams?.[`${filterName}`]?.map((param) => {
+      if (param !== 'all' || param !== 'all_tags') {
         getProductsData?.map((productItem) => {
-          if (removeAccents(productItem?.[`${matchId}`]) === removeAccents(brand)) {
-            filteredData.push(productItem);
+          if (filterName === 'brands') {
+            if (removeAccents(productItem?.manufacturer) === removeAccents(param)) {
+              filteredData.push(productItem); // TODO: Daha önce eklenmediyse kontrolü
+            }
+          } else if (filterName === 'tags') {
+            productItem?.tags?.map((tagItem) => {
+              if (removeAccents(tagItem) === removeAccents(param)) {
+                filteredData.push(productItem); // TODO: Daha önce eklenmediyse kontrolü
+              }
+            });
           }
         });
       } else {
@@ -70,7 +77,10 @@ function Home() {
     let filteredData: Array<Record<string, string | number | Array<string>>> = [];
 
     // Brands Filter
-    filterFunction('brands', 'manufacturer', filteredData);
+    filterFunction('brands', filteredData);
+
+    // Brands Filter
+    filterFunction('tags', filteredData);
 
     console.log('filteredData: ', filteredData);
   };
