@@ -52,7 +52,7 @@ function Sidebar() {
   const getTagsData = useSelector((state: RootState) => state?.tagsReducer?.success);
 
   // This function analyze incoming data and analyze according to needs (re-format data for filters)
-  const reFormatFilterData = (data) => {
+  const reFormatBrandsData = (data) => {
     const dataAll = [
       {
         name: 'all',
@@ -82,7 +82,7 @@ function Sidebar() {
   }, []);
 
   useEffect(() => {
-    getCompaniesData && reFormatFilterData(getCompaniesData);
+    getCompaniesData && reFormatBrandsData(getCompaniesData);
   }, [getCompaniesData]);
 
   useEffect(() => {
