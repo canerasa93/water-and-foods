@@ -96,8 +96,6 @@ function Sidebar() {
     // Filter
     filterFunction(filterName, filteredData, id, value);
 
-    console.log('filteredData: ', getUniqueListBy(filteredData, 'name'));
-
     dispatch({
       type: types.PRODUCT_LIST_UPDATE,
       payload: getUniqueListBy(filteredData, 'name')
