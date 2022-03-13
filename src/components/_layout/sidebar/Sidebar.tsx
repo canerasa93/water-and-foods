@@ -1,14 +1,21 @@
 // Import React
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Import Styled Components
 import { StyledSidebar } from './_sidebarStyle';
 
+// Import Store
+import { getCompanies } from 'src/store/actions/test/getCompanies';
+
 // Import Components
 import SidebarCard from 'src/components/sidebar-card/SidebarCard';
+import { RootState } from 'src/store/store';
+import { isArray } from 'src/common/utils/array/arrayUtils';
 
-const staticSidebarBoxes = [
-  {
+function Sidebar() {
+  // Variables
+  const [filterData] = useState({
     title: 'SORTING',
     scrollable: false,
     data: [
@@ -33,87 +40,55 @@ const staticSidebarBoxes = [
         id: 'otn'
       }
     ]
-  },
-  {
-    title: 'BRANDS',
-    scrollable: true,
-    data: [
+  });
+  const [brandsData, setBrandsData] = useState<Array<Record<string, string | number>>>();
+
+  // Store Variables
+  const dispatch = useDispatch();
+
+  let getCompaniesData = useSelector((state: RootState) => state?.globalReducer?.success?.data.companies);
+
+  //This function analyze incoming data and analyze according to needs (re-format data for filters)
+  const reFormatFilterData = (data) => {
+    const dataAll = [
       {
         name: 'all',
         label: 'All',
         id: 'all',
         count: 5
-      },
-      {
-        name: 'all',
-        label: 'gizem',
-        id: 'gize',
-        count: 5
-      },
-      {
-        name: 'memo',
-        label: 'memo',
-        id: 'memo',
-        count: 5
-      },
-      {
-        name: 'caner',
-        label: 'caner',
-        id: 'caner',
-        count: 5
       }
-    ]
-  },
-  {
-    title: 'TAGS',
-    scrollable: true,
-    data: [
-      {
-        name: 'all_tags',
-        label: 'All',
-        id: 'all_tags',
-        count: 5
+    ];
 
-      },
-      {
-        name: 'asagizem',
-        label: 'asagizem',
-        id: 'asagizem',
-        count: 5
+    if (data && isArray(data)) {
+      let result: Array<Record<string, string | number>> = [];
+      data?.map((company) => {
+        result?.push({
+          name: company?.slug,
+          label: company?.name,
+          id: company?.slug,
+          count: 0
+        });
+      });
 
-      },
-      {
-        name: 'asacaner',
-        label: 'giasacaner',
-        id: 'asacanere',
-        count: 5
+      setBrandsData([...dataAll, ...result]);
+    }
+  };
 
-      },
-      {
-        name: 'dilmenmemo',
-        label: 'dilmenmemo',
-        id: 'dilmenmemo',
-        count: 5
-      },
-      {
-        name: 'atman',
-        label: 'atman',
-        id: 'atman',
-        count: 5
-      }
-    ]
-  }
-];
+  useEffect(() => {
+    dispatch(getCompanies());
+  }, []);
 
-function Sidebar() {
-  // Variables
-  const [filterData] = useState(staticSidebarBoxes);
+  useEffect(() => {
+    reFormatFilterData(getCompaniesData);
+  }, [getCompaniesData]);
 
   return (
     <StyledSidebar>
-      {filterData?.map((sidebarItem) => (
-        <SidebarCard {...sidebarItem} key={sidebarItem?.title} />
-      ))}
+      {/* SORTING */}
+      <SidebarCard {...filterData} />
+
+      {/* BRANDS */}
+      <SidebarCard title={'BRANDS'} scrollable={true} data={brandsData} />
     </StyledSidebar>
   );
 }

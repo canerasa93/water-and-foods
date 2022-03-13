@@ -50,6 +50,12 @@ function SidebarCard(props: SidebarCardProps) {
     }
   };
 
+  const handleCheckboxChange = (value, name, index) => {
+    if (index <= 0 && value === 'all') {
+      console.log('name:' , name);
+    }
+  };
+
   return (
     <StyledSidebarCard>
       <StyledSidebarCardTitle>
@@ -74,7 +80,7 @@ function SidebarCard(props: SidebarCardProps) {
                   name={item?.title}
                   label={item?.label}
                   defaultChecked={index <= 0 && true}
-                  handleOnChange={(value, name) => console.log('value + name: ', value + ' ' + name)}
+                  handleOnChange={(value, name) => handleCheckboxChange(value, name, index)}
                   key={item?.id}
                 />
               ) : (

@@ -4,7 +4,7 @@ import axios from 'axios';
 // Import Types
 import * as types from '../../action-types/types';
 
-export const test = () => (dispatch) => {
+export const getCompanies = () => (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
