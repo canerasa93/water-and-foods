@@ -5,7 +5,7 @@ import axios from 'axios';
 import * as types from '../../action-types/types';
 
 // Import Utils
-import { isArray } from 'src/common/utils/array/arrayUtils';
+import { isArray, sortAscByKey } from 'src/common/utils/array/arrayUtils';
 
 //This function analyze incoming data and analyze according to needs (re-format data for filters)
 const reFormatProducts = (data: Array<Record<string, string | number>>) => {
@@ -26,7 +26,7 @@ const reFormatProducts = (data: Array<Record<string, string | number>>) => {
     });
   }
 
-  return [...result];
+  return sortAscByKey([...result], 'price');
 };
 
 export const getProducts = () => (dispatch: (arg0: { type: string; payload: any }) => void) => {

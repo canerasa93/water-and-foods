@@ -146,20 +146,18 @@ function Sidebar() {
 
   // Handle Checkbox Change on Filter
   const handleFilterRadioChange = (id: string) => {
-    let sortedData = getProductsData;
-
     if (id === filterData.data[0].id) {
       //Price low to high
-      sortedData = sortAscByKey(getProductsData, 'price');
+      sortAscByKey(getProductsData, 'price');
     } else if (id === filterData.data[1].id) {
       //Price high to low
-      sortedData = sortDescByKey(getProductsData, 'price');
+      sortDescByKey(getProductsData, 'price');
     } else if (id === filterData.data[2].id) {
       // New to old
-      sortedData = sortDateAscByKey(getProductsData, 'added');
+      sortDateAscByKey(getProductsData, 'added');
     } else {
       // Old to new
-      sortedData = sortDateDescByKey(getProductsData, 'added');
+      sortDateDescByKey(getProductsData, 'added');
     }
 
     dispatch({
