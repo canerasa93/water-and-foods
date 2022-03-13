@@ -7,6 +7,8 @@ import { StyledSidebar } from './_sidebarStyle';
 
 // Import Store
 import { getCompanies } from 'src/store/actions/companies/getCompanies';
+import { getTags } from 'src/store/actions/tags/getTags';
+
 import { RootState } from 'src/store/store';
 
 // Import Components
@@ -46,8 +48,10 @@ function Sidebar() {
   // Store Variables
   const dispatch = useDispatch();
   let getCompaniesData = useSelector((state: RootState) => state?.companiesReducer?.success?.data.companies);
+  const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success);
+  const getTagsData = useSelector((state: RootState) => state?.tagsReducer?.success);
 
-  //This function analyze incoming data and analyze according to needs (re-format data for filters)
+  // This function analyze incoming data and analyze according to needs (re-format data for filters)
   const reFormatFilterData = (data) => {
     const dataAll = [
       {
@@ -78,9 +82,12 @@ function Sidebar() {
   }, []);
 
   useEffect(() => {
-    reFormatFilterData(getCompaniesData);
-
+    getCompaniesData && reFormatFilterData(getCompaniesData);
   }, [getCompaniesData]);
+
+  useEffect(() => {
+    getProductsData && dispatch(getTags(getProductsData));
+  }, [getProductsData]);
 
   return (
     <StyledSidebar>
@@ -91,7 +98,7 @@ function Sidebar() {
       <SidebarCard title={'BRANDS'} scrollable={true} data={brandsData} />
 
       {/* TAGS */}
-      <SidebarCard title={'TAGS'} scrollable={true} data={brandsData} />
+      <SidebarCard title={'TAGS'} scrollable={true} data={getTagsData} />
     </StyledSidebar>
   );
 }

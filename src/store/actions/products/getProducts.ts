@@ -17,7 +17,8 @@ const reFormatProducts = (data: Array<Record<string, string | number>>) => {
         name: product?.slug,
         title: product?.name,
         id: product?.slug,
-        price: Number(product.price)
+        price: Number(product.price),
+        tags: product?.tags
       });
     });
   }
@@ -38,6 +39,7 @@ export const getProducts = () => (dispatch: (arg0: { type: string; payload: any 
     })
     .then((res) => {
       // success: response payload
+      // Dispatch Products
       dispatch({
         type: types.PRODUCT_LIST_SUCCESS,
         payload: reFormatProducts(res?.data?.items)

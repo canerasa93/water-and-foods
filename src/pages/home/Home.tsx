@@ -11,12 +11,13 @@ import FilterButtons from 'src/components/filter-buttons/FilterButtons';
 import ContentBox from 'src/components/content-box/ContentBox';
 import ProductList from 'src/components/product-list/ProductList';
 import Pagination from 'src/components/pagination/Pagination';
+import { arrayToPaginate } from 'src/common/utils/array/arrayUtils';
 
 function Home() {
   // Store Variables
   const dispatch = useDispatch();
 
-  let getProductsData = useSelector((state: RootState) => state?.productsReducer?.success);
+  const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -26,7 +27,7 @@ function Home() {
     <Fragment>
       <FilterButtons />
       <ContentBox>
-        <ProductList data={getProductsData} />
+        <ProductList data={ arrayToPaginate(getProductsData, 16)?.[0]} />
       </ContentBox>
 
       <Pagination />

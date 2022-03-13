@@ -19,9 +19,11 @@ import Input from '../form/input/Input';
 import Checkbox from '../form/checkbox/Checkbox';
 import Radio from '../form/radio/Radio';
 
+
+
 interface SidebarCardProps {
   title: string;
-  data: Array<any>;
+  data: Array<Record<string, string | number>>;
   scrollable?: boolean;
 }
 
@@ -41,7 +43,7 @@ function SidebarCard(props: SidebarCardProps) {
   const staticSearch = () => {
     if (data && data?.length && isArray(data)) {
       const filter = data?.filter((filterItem) =>
-        [filterItem?.label]?.some((item) => !!item && removeAccents(item)?.includes(removeAccents(searchData)))
+        [filterItem?.label]?.some((item) => !!item && removeAccents(item.toString())?.includes(removeAccents(searchData)))
       );
 
       return filter?.length ? filter : searchData ? [] : data;
@@ -52,7 +54,7 @@ function SidebarCard(props: SidebarCardProps) {
 
   const handleCheckboxChange = (value, name, index) => {
     if (index <= 0 && value === 'all') {
-      console.log('name:' , name);
+      console.log('name:', name);
     }
   };
 
@@ -75,19 +77,19 @@ function SidebarCard(props: SidebarCardProps) {
             staticSearch()?.map((item, index) => {
               return scrollable ? (
                 <Checkbox
-                  count={item?.count}
-                  id={item?.id}
-                  name={item?.title}
-                  label={item?.label}
+                  count={Number(item?.count)}
+                  id={item?.id.toString()}
+                  name={title}
+                  label={item?.label.toString()}
                   defaultChecked={index <= 0 && true}
                   handleOnChange={(value, name) => handleCheckboxChange(value, name, index)}
                   key={item?.id}
                 />
               ) : (
                 <Radio
-                  id={item?.id}
-                  name={item?.title}
-                  label={item?.label}
+                  id={item?.id.toString()}
+                  name={title}
+                  label={item?.label.toString()}
                   defaultChecked={index <= 0 && true}
                   handleOnChange={(value, id) => console.log('value + id radio: ', value + ' ' + id)}
                   key={item.id}
