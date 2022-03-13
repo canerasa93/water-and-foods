@@ -8,6 +8,7 @@ import { StyledSidebar } from './_sidebarStyle';
 // Import Utils
 import { removeAccents } from 'src/common/utils/string/stringUtils';
 import {
+  countByKey,
   getUniqueListBy,
   sortAscByKey,
   sortDateAscByKey,
@@ -174,6 +175,16 @@ function Sidebar() {
     });
   };
 
+  // Calculate Brand Counters
+  const calculateBrandCounters = () => {
+    getCompaniesData[0].count = filterProductOriginByTab(getMainStoreData?.filterParams?.filterButton).length;
+
+    getCompaniesData?.map((brandItem, index) => {
+      const count = countByKey(getProductsData, 'manufacturer', brandItem.id);
+      index !== 0 && (getCompaniesData[index].count = count);
+    });
+  };
+
   // Get Companies on Load Action
   useEffect(() => {
     !getCompaniesData && dispatch(getCompanies());
@@ -182,6 +193,10 @@ function Sidebar() {
   useEffect(() => {
     getProductsData && dispatch(getTags(getProductsData));
   }, [getProductsData]);
+
+  useEffect(() => {
+    getCompaniesData && getProductsData && calculateBrandCounters();
+  }, [getCompaniesData, getProductsData]);
 
   return (
     <StyledSidebar>

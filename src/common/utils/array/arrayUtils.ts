@@ -1,5 +1,6 @@
 // Import Utils
 import { unixTimeStampToDate } from 'src/common/utils/date/dateUtils';
+import { removeAccents } from './../string/stringUtils';
 
 export const isArray = (value) => {
   const result = Array?.isArray(value);
@@ -47,6 +48,7 @@ export function sortDateAscByKey(array, key) {
     return x < y ? -1 : x > y ? 1 : 0;
   });
 }
+
 export function sortDateDescByKey(array, key) {
   return array.sort(function (a, b) {
     const x = unixTimeStampToDate(a[key]);
@@ -54,4 +56,16 @@ export function sortDateDescByKey(array, key) {
 
     return x > y ? -1 : x < y ? 1 : 0;
   });
+}
+
+export function countByKey(array, key, key2) {
+  let counter = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    if (removeAccents(array[i]?.[key]) === removeAccents(key2)) {
+      counter++;
+    }
+  }
+
+  return counter;
 }
