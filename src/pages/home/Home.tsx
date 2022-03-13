@@ -16,7 +16,6 @@ import { arrayToPaginate } from 'src/common/utils/array/arrayUtils';
 function Home() {
   // Store Variables
   const dispatch = useDispatch();
-
   const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success);
 
   useEffect(() => {

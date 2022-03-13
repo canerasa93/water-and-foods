@@ -78,18 +78,18 @@ function SidebarCard(props: SidebarCardProps) {
               return scrollable ? (
                 <Checkbox
                   count={Number(item?.count)}
-                  id={item?.id.toString()}
+                  id={item?.id?.toString()}
                   name={title}
-                  label={item?.label.toString()}
+                  label={item?.label?.toString()}
                   defaultChecked={index <= 0 && true}
                   handleOnChange={(value, name) => handleCheckboxChange(value, name, index)}
                   key={item?.id}
                 />
               ) : (
                 <Radio
-                  id={item?.id.toString()}
+                  id={item?.id?.toString()}
                   name={title}
-                  label={item?.label.toString()}
+                  label={item?.label?.toString()}
                   defaultChecked={index <= 0 && true}
                   handleOnChange={(value, id) => console.log('value + id radio: ', value + ' ' + id)}
                   key={item.id}

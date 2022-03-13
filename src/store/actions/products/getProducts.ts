@@ -18,7 +18,8 @@ const reFormatProducts = (data: Array<Record<string, string | number>>) => {
         title: product?.name,
         id: product?.slug,
         price: Number(product.price),
-        tags: product?.tags
+        tags: product?.tags,
+        itemType: product?.itemType
       });
     });
   }
