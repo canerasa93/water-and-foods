@@ -82,6 +82,22 @@ function Sidebar() {
     });
   };
 
+  // Handle Checkbox Change on Filter
+  const handleFilterRadioChange = (id: string) => {
+    dispatch({
+      type: types.SUCCESS,
+      payload: {
+        filterParams: {
+          filterButton: getMainStoreData.filterParams.filterButton,
+          brands: getMainStoreData.filterParams.brands,
+          tags: getMainStoreData.filterParams.tags,
+          page: getMainStoreData.filterParams.page,
+          sorting: id
+        }
+      }
+    });
+  };
+
   // Get Companies on Load Action
   useEffect(() => {
     !getCompaniesData && dispatch(getCompanies());
@@ -94,7 +110,7 @@ function Sidebar() {
   return (
     <StyledSidebar>
       {/* SORTING */}
-      <SidebarCard {...filterData} title="SORTING" />
+      <SidebarCard {...filterData} title="SORTING" handleOnChange={(_, id: string) => handleFilterRadioChange(id)} />
 
       {/* BRANDS */}
       <SidebarCard

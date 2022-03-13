@@ -60,9 +60,11 @@ function SidebarCard(props: SidebarCardProps) {
     }
   };
 
-  const handleCheckboxChange = (value, name) => {
+  const handleFilterChange = (value, name) => {
     handleOnChange && handleOnChange(value, name);
   };
+
+
 
   return (
     <StyledSidebarCard>
@@ -92,7 +94,7 @@ function SidebarCard(props: SidebarCardProps) {
                     getMainStoreData?.['filterParams']?.[`${title?.toLowerCase()}`][0] === item?.id?.toString() &&
                     true
                   }
-                  handleOnChange={(value, id) => handleCheckboxChange(value, id)}
+                  handleOnChange={(value, id) => handleFilterChange(value, id)}
                   key={item?.id}
                 />
               ) : (
@@ -105,8 +107,9 @@ function SidebarCard(props: SidebarCardProps) {
                     getMainStoreData?.['filterParams']?.[`${title?.toLowerCase()}`] === item?.id?.toString() &&
                     true
                   }
-                  handleOnChange={(value, id) => console.log('value + id radio: ', value + ' ' + id)}
+                  handleOnChange={(value, id) => handleFilterChange(value, id)}
                   key={item.id}
+                  
                 />
               );
             })}
