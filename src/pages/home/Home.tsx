@@ -8,7 +8,7 @@ import { RootState } from 'src/store/store';
 import * as types from 'src/store/action-types/types';
 
 // Import Utils
-import { arrayToPaginate } from 'src/common/utils/array/arrayUtils';
+import { arrayToPaginate, getUniqueListBy } from 'src/common/utils/array/arrayUtils';
 
 // Import Components
 import FilterButtons from 'src/components/filter-buttons/FilterButtons';
@@ -55,12 +55,12 @@ function Home() {
         getProductsData?.map((productItem) => {
           if (filterName === 'brands') {
             if (removeAccents(productItem?.manufacturer) === removeAccents(param)) {
-              filteredData.push(productItem); // TODO: Daha önce eklenmediyse kontrolü
+              filteredData.push(productItem);
             }
           } else if (filterName === 'tags') {
             productItem?.tags?.map((tagItem) => {
               if (removeAccents(tagItem) === removeAccents(param)) {
-                filteredData.push(productItem); // TODO: Daha önce eklenmediyse kontrolü
+                filteredData.push(productItem);
               }
             });
           }
@@ -82,7 +82,10 @@ function Home() {
     // Brands Filter
     filterFunction('tags', filteredData);
 
-    console.log('filteredData: ', filteredData);
+    dispatch({
+      type: types.PRODUCT_LIST_UPDATE,
+      payload: getUniqueListBy(filteredData, 'name')
+    });
   };
 
   useEffect(() => {
