@@ -14,13 +14,18 @@ interface ButtonProps {
   translated?: boolean;
   margin?: string;
   size?: BUTTON_SIZES;
+  handleOnClick?: () => void;
 }
 
 function Button(props: ButtonProps) {
   // Desctruct Props
-  const { label, translated } = props;
+  const { label, translated, handleOnClick } = props;
 
-  return <StyledButton {...props}>{translated ? <TranslatedText label={label} /> : label}</StyledButton>;
+  return (
+    <StyledButton {...props} onClick={handleOnClick}>
+      {translated ? <TranslatedText label={label} /> : label}
+    </StyledButton>
+  );
 }
 
 export default Button;

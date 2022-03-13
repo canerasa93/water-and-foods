@@ -11,6 +11,13 @@ export const StyledProductCard = styled.div`
   display: inline-flex;
   flex-direction: column;
 `;
+
+export const StyledCardBottomWrapper = styled.div`
+  display: inline-flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex: 1;
+`;
 export const StyledProductCardImgWrapper = styled.div`
   border: 1.8px solid ${THEME.COLORS.SHADOW};
   padding: 15px;

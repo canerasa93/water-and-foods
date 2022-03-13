@@ -4,7 +4,7 @@ import axios from 'axios';
 // Import Types
 import * as types from '../../action-types/types';
 
-export const getCompanies = () => (dispatch) => {
+export const getCompanies = () => (dispatch: (arg0: { type: string; payload: any }) => void) => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
@@ -18,14 +18,14 @@ export const getCompanies = () => (dispatch) => {
     .then((res) => {
       // success: response payload
       dispatch({
-        type: types.SUCCESS,
+        type: types.COMPANIES_SUCCESS,
         payload: res
       });
     })
     .catch((err) => {
       // fail: response payload
       dispatch({
-        type: types.FAIL,
+        type: types.COMPANIES_FAIL,
         payload: err
       });
     });

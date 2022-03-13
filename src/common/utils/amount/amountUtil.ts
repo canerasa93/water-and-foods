@@ -11,7 +11,7 @@ export const getFormattedAmount = (amount, currencySymbol?, digit?) => {
 
   let amountValue = amount;
 
-  amount === null || (amount === undefined && (amountValue = 0));
+  (amount === null || amount === undefined) && (amountValue = 0);
 
   return formattedOutput
     ?.format(amountValue || 0)

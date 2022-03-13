@@ -8,29 +8,49 @@ import {
   StyledProductCardImg,
   StyledProductPrice,
   StyledProductTitle,
-  StyledProductCardFigure
+  StyledProductCardFigure,
+  StyledCardBottomWrapper
 } from './_productCardStyle';
 
 // Import Components
 import Button from '../button/Button';
 import { BUTTON_SIZES, BUTTON_TYPES } from 'src/common/constants/button/buttonConstants';
 
-function ProductCard() {
+interface ProductCardProps {
+  price: number;
+  title: string;
+  id: string;
+}
+
+function ProductCard(props: ProductCardProps) {
+  // Desctruct Props
+  const { price, title, id } = props;
+
   return (
     <StyledProductCard>
       {/* Product Image */}
       <StyledProductCardImgWrapper>
         <StyledProductCardFigure>
-          <StyledProductCardImg src="https://cdn.getir.com/product/62027c5488f0422d9d19ae30_tr_1646806460006.jpeg" alt="Space Shuttle" />
+          <StyledProductCardImg
+            src="https://cdn.getir.com/product/62027c5488f0422d9d19ae30_tr_1646806460006.jpeg"
+            alt={title}
+          />
         </StyledProductCardFigure>
       </StyledProductCardImgWrapper>
       {/* Product Price */}
-      <StyledProductPrice>{getFormattedAmount(14.99)}</StyledProductPrice>
+      <StyledProductPrice>{getFormattedAmount(price)}</StyledProductPrice>
       {/* Product Title */}
-      <StyledProductTitle>Gorgeous Office Mug</StyledProductTitle>
+      <StyledCardBottomWrapper>
+        <StyledProductTitle>{title}</StyledProductTitle>
 
-      {/* Basket Button */}
-      <Button label="GLOBAL.CTA.BUTTONS.ADD" display={BUTTON_TYPES.BLOCK} size={BUTTON_SIZES.SMALL} />
+        {/* Basket Button */}
+        <Button
+          label="GLOBAL.CTA.BUTTONS.ADD"
+          display={BUTTON_TYPES.BLOCK}
+          size={BUTTON_SIZES.SMALL}
+          handleOnClick={() => console.log('id: ', id)}
+        />
+      </StyledCardBottomWrapper>
     </StyledProductCard>
   );
 }

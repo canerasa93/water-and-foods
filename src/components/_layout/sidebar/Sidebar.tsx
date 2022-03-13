@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StyledSidebar } from './_sidebarStyle';
 
 // Import Store
-import { getCompanies } from 'src/store/actions/test/getCompanies';
+import { getCompanies } from 'src/store/actions/companies/getCompanies';
+import { RootState } from 'src/store/store';
 
 // Import Components
 import SidebarCard from 'src/components/sidebar-card/SidebarCard';
-import { RootState } from 'src/store/store';
 import { isArray } from 'src/common/utils/array/arrayUtils';
 
 function Sidebar() {
@@ -45,7 +45,7 @@ function Sidebar() {
 
   // Store Variables
   const dispatch = useDispatch();
-  let getCompaniesData = useSelector((state: RootState) => state?.globalReducer?.success?.data.companies);
+  let getCompaniesData = useSelector((state: RootState) => state?.companiesReducer?.success?.data.companies);
 
   //This function analyze incoming data and analyze according to needs (re-format data for filters)
   const reFormatFilterData = (data) => {
@@ -79,6 +79,7 @@ function Sidebar() {
 
   useEffect(() => {
     reFormatFilterData(getCompaniesData);
+
   }, [getCompaniesData]);
 
   return (

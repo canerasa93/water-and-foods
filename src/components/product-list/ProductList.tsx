@@ -4,8 +4,14 @@ import { StyledProductList } from './_productListStyle';
 // Import Components
 import ProductCard from '../product-card/ProductCard';
 
+type ProductCardData = {
+  price: number;
+  title: string;
+  id: string;
+};
+
 interface ProductListProps {
-  data: Array<any>;
+  data: Array<ProductCardData>;
 }
 
 ProductList.defaultProps = {
@@ -19,7 +25,7 @@ function ProductList(props: ProductListProps) {
   return (
     <StyledProductList>
       {data?.map((item, index) => {
-        return <ProductCard {...item} key={item?.title+index} />;
+        return <ProductCard {...item} key={item?.id + index} />;
       })}
     </StyledProductList>
   );
