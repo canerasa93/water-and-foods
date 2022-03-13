@@ -8,6 +8,7 @@ import { BUTTON_VARIANTS } from 'src/common/constants/button/buttonConstants';
 // Import Store
 import { getTypes } from 'src/store/actions/types/getTypes';
 import { RootState } from 'src/store/store';
+import * as types from 'src/store/action-types/types';
 
 // Import Styled Commponents
 import { StyledFilterButtonsWrapper } from './_filterButtonsStyle';
@@ -23,11 +24,20 @@ function FilterButtons() {
   const dispatch = useDispatch();
   const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success);
   const getTypesData = useSelector((state: RootState) => state?.typesReducer?.success);
+  const getMainStoreData = useSelector((state: RootState) => state?.globalReducer?.success);
 
   // Handle Click on Filter
   const filterOnClick = (title) => {
     setActiveTab(title);
-    console.log('filter click: ', title);
+
+    let newFilterData = getMainStoreData;
+
+    newFilterData['filterParams']['filterButton'] = title
+
+    dispatch({
+      type: types.SUCCESS,
+      payload: newFilterData
+    });
   };
 
   // Get Types from Product Data
@@ -42,15 +52,15 @@ function FilterButtons() {
 
   return (
     <StyledFilterButtonsWrapper>
-      {getTypesData?.map((filterbutton) => {
+      {getTypesData?.map((filterItem) => {
         return (
           <Button
             translated={false}
-            key={filterbutton?.title}
-            label={filterbutton?.title}
+            key={filterItem?.title}
+            label={filterItem?.title}
             margin="0 10px 0 0"
-            variant={activeTab === filterbutton?.title ? BUTTON_VARIANTS.PRIMARY : BUTTON_VARIANTS.SECONDARY}
-            handleOnClick={() => filterOnClick(filterbutton?.title)}
+            variant={activeTab === filterItem?.title ? BUTTON_VARIANTS.PRIMARY : BUTTON_VARIANTS.SECONDARY}
+            handleOnClick={() => filterOnClick(filterItem?.title)}
           />
         );
       })}
