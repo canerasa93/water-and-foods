@@ -53,10 +53,19 @@ function Sidebar() {
   // Handle Checkbox Change on Filter
   const handleFilterCheckboxChange = (value: boolean, id: string, filterName: string) => {
     let data = getMainStoreData.filterParams[`${filterName}`];
-    if (value) {
-      data = [...data, ...[id]];
+
+    if (id !== 'all') {
+      if (value) {
+        data = [...data, ...[id]];
+        data = data?.filter((b) => b !== 'all' && b !== 'all_tags');
+      } else {
+        data = data?.filter((b) => b !== id);
+
+        if (!data.length) {
+          data = filterName === 'brands' ? [...data, ...['all']] : [...data, ...['all_tags']];
+        }
+      }
     } else {
-      data = data?.filter((b) => b !== id);
     }
 
     dispatch({
