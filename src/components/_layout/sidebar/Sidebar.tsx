@@ -9,6 +9,7 @@ import { StyledSidebar } from './_sidebarStyle';
 import { removeAccents } from 'src/common/utils/string/stringUtils';
 import {
   countByKey,
+  countByFind,
   getUniqueListBy,
   sortAscByKey,
   sortDateAscByKey,
@@ -180,8 +181,38 @@ function Sidebar() {
     getCompaniesData[0].count = filterProductOriginByTab(getMainStoreData?.filterParams?.filterButton).length;
 
     getCompaniesData?.map((brandItem, index) => {
-      const count = countByKey(getProductsData, 'manufacturer', brandItem.id);
+      const count: number = countByKey(getProductsData, 'manufacturer', brandItem.id);
       index !== 0 && (getCompaniesData[index].count = count);
+    });
+  };
+
+  // Calculate Tags Counters
+  const calculateTagsCounters = () => {
+    let tagsDataWithCount: any = [];
+
+    getTagsData?.map((tagItem, index) => {
+      const count: number = countByFind(getProductsData, 'tags', tagItem.label);
+
+      tagsDataWithCount[index] = {
+        name: getTagsData[index].name,
+        label: getTagsData[index].label,
+        id: getTagsData[index].id,
+        count: count
+      };
+    });
+
+    let allTagsCount = 0;
+    filterProductOriginByTab(
+      filterProductOriginByTab(getMainStoreData?.filterParams?.filterButton)?.map((product) => {
+        product.tags.length > 0 && allTagsCount++;
+      })
+    );
+
+    tagsDataWithCount[0].count = allTagsCount;
+
+    dispatch({
+      type: types.TAGS_SUCCESS,
+      payload: tagsDataWithCount
     });
   };
 
@@ -190,13 +221,20 @@ function Sidebar() {
     !getCompaniesData && dispatch(getCompanies());
   }, [getCompaniesData]);
 
+  // Run Brand Counters
+  useEffect(() => {
+    getCompaniesData && getProductsData && calculateBrandCounters();
+  }, [getCompaniesData, getProductsData]);
+
+  // Get Tags on Load Action
   useEffect(() => {
     getProductsData && dispatch(getTags(getProductsData));
   }, [getProductsData]);
 
+  // Run Tag Counters
   useEffect(() => {
-    getCompaniesData && getProductsData && calculateBrandCounters();
-  }, [getCompaniesData, getProductsData]);
+    getProductsData && getMainStoreData && getTagsData && calculateTagsCounters();
+  }, [getMainStoreData, getTagsData, getProductsData]);
 
   return (
     <StyledSidebar>

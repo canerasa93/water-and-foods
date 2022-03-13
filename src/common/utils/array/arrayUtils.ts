@@ -69,3 +69,15 @@ export function countByKey(array, key, key2) {
 
   return counter;
 }
+
+export function countByFind(array, key, key2) {
+  let counter = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i]?.[key]?.includes(key2)) {
+      counter++;
+    }
+  }
+
+  return counter;
+}

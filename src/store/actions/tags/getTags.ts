@@ -33,7 +33,7 @@ const createTagsData = (data: Array<TagsCardType>) => {
             name: tag,
             label: tag,
             id: tag,
-            count: 5
+            count: 0
           });
         });
       }
