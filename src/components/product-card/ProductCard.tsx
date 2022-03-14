@@ -1,5 +1,5 @@
 // Import React
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Import Constants
 import { getFormattedAmount } from 'src/common/utils/amount/amountUtil';
@@ -16,7 +16,9 @@ import {
 } from './_productCardStyle';
 
 // Import Store
+import { basketItemControl } from 'src/store/actions/basket/basketItemControl';
 import { addToBasket } from 'src/store/actions/basket/addToBasket';
+import { RootState } from 'src/store/store';
 
 // Import Components
 import Button from '../button/Button';
@@ -34,10 +36,16 @@ function ProductCard(props: ProductCardProps) {
 
   // Store Variables
   const dispatch = useDispatch();
+  const getBasketData = useSelector((state: RootState) => state?.basketReducer?.success);
 
   // Add Basket Button Click
   const handleAddBasket = () => {
-    dispatch(addToBasket(props));
+    const isAdded = getBasketData.find((item) => item.id === props.id);
+    if (isAdded) {
+      dispatch(basketItemControl(props.id, 'increase'));
+    } else {
+      dispatch(addToBasket(props));
+    }
   };
 
   return (
@@ -59,7 +67,7 @@ function ProductCard(props: ProductCardProps) {
 
         {/* Basket Button */}
         <Button
-          label="GLOBAL.CTA.BUTTONS.ADD"
+          label={'GLOBAL.CTA.BUTTONS.ADD'}
           display={BUTTON_TYPES.BLOCK}
           size={BUTTON_SIZES.SMALL}
           handleOnClick={() => handleAddBasket()}

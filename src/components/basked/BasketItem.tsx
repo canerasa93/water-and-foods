@@ -16,12 +16,15 @@ import {
 import { ICON_LIST } from 'src/common/constants/icon/iconList';
 import { ICON_SIZES } from 'src/common/constants/icon/iconSizes';
 
+// Import Store
+import { basketItemControl } from 'src/store/actions/basket/basketItemControl';
+
 // Import Utils
 import { getFormattedAmount } from 'src/common/utils/amount/amountUtil';
 
 // Import Components
 import CustomIcon from '../custom-icon/CustomIcon';
-import { basketItemControl } from 'src/store/actions/basket/basketItemControl';
+
 
 interface BasketItem {
   name: string;

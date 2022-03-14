@@ -12,6 +12,10 @@ export function getUniqueListBy(arr, key) {
   return [...new Map(arr.map((item) => [item[key], item])).values()];
 }
 
+export function getUniqueCount(arr, key) {
+  return [...new Map(arr.map((item) => [item[key], item])).values()];
+}
+
 export function sortAscByKey(array, key) {
   return array.sort(function (a, b) {
     const x = a[key];
@@ -69,4 +73,26 @@ export function countByFind(array, key, key2) {
   }
 
   return counter;
+}
+
+export function countAndOverrite(arr, key) {
+  const countDict = arr.reduce((acc, curr) => {
+    const { partNum } = curr;
+
+    if (acc[partNum]) {
+      ++acc[partNum];
+    } else {
+      acc[partNum] = 1;
+    }
+
+    return acc;
+  }, {});
+
+  const result = arr.map((obj) => {
+    obj[key] = countDict[obj.partNum];
+
+    return obj;
+  });
+
+  return result;
 }

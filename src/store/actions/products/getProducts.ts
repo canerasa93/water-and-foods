@@ -21,7 +21,8 @@ const reFormatProducts = (data: Array<Record<string, string | number>>) => {
         tags: product?.tags,
         itemType: product?.itemType,
         manufacturer: product?.manufacturer,
-        added: product?.added
+        added: product?.added,
+        inventory: 0
       });
     });
   }
