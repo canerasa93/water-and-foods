@@ -1,5 +1,11 @@
+// Import React
+import { useSelector } from 'react-redux';
+
 // Import Utils
 import { getFormattedAmount } from 'src/common/utils/amount/amountUtil';
+
+// Import Store
+import { RootState } from 'src/store/store';
 
 // Import Constants
 import { ICON_LIST } from 'src/common/constants/icon/iconList';
@@ -19,8 +25,8 @@ import Container from '../container/Container';
 import CustomIcon from 'src/components/custom-icon/CustomIcon';
 
 function Header() {
-  // Variables
-  const totalPrice = getFormattedAmount(39.97);
+  // Store Variables
+  const getBasketDataTotal = useSelector((state: RootState) => state?.basketReducer?.success?.total);
 
   return (
     <StyledHeader>
@@ -30,7 +36,7 @@ function Header() {
         </StyledHeaderCenter>
         <StyledHeaderRight>
           <CustomIcon name={ICON_LIST.BASKET} status={ICON_STATUS.WHITE} />
-          <StyledBasketTotalPrice>{totalPrice}</StyledBasketTotalPrice>
+          <StyledBasketTotalPrice>{getFormattedAmount(getBasketDataTotal)}</StyledBasketTotalPrice>
         </StyledHeaderRight>
       </Container>
     </StyledHeader>

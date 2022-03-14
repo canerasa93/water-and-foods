@@ -1,7 +1,10 @@
 import * as types from 'src/store/action-types/types';
 
-const initialState = {
-  success: []
+const initialState: any = {
+  success: {
+    data: [],
+    total: 0
+  }
 };
 
 export default function basketReducer(state = initialState, action) {
@@ -9,31 +12,44 @@ export default function basketReducer(state = initialState, action) {
     case types.BASKET_CREATE:
       return {
         ...state,
-        success: [...state.success, { ...action.payload, inventory: 1 }]
+        success: {
+          ...state.success,
+          data: [...state.success.data, { ...action.payload, inventory: 1 }],
+          
+        }
       };
     case types.BASKET_INCREASE:
-      console.log('state: ', state);
       return {
         ...state,
-        success: state.success.map((product: any) =>
-          product.id === action.payload ? { ...product, inventory: product?.inventory + 1 } : product
-        )
+        success: {
+          ...state.success,
+          data: state.success.data.map((product: any) =>
+            product.id === action.payload ? { ...product, inventory: product?.inventory + 1 } : product
+          )
+        }
       };
     case types.BASKET_DECREASE:
       return {
         ...state,
-        success: state.success.map((product: any) =>
-          product.id === action.payload
-            ? {
-                ...product,
-                inventory: product.inventory !== 1 ? product.inventory - 1 : 1
-              }
-            : product
-        )
+        success: {
+          ...state.success,
+          data: state.success.data.map((product: any) =>
+            product.id === action.payload
+              ? {
+                  ...product,
+                  inventory: product.inventory !== 1 ? product.inventory - 1 : 1
+                }
+              : product
+          )
+        }
       };
-    case types.BASKET_DELETE:
+    case types.BASKET_TOTAL_PRICE_UPDATE:
       return {
-        success: action.payload
+        ...state,
+        success: {
+          ...state.success,
+          total: action.payload
+        }
       };
     default:
       return state;

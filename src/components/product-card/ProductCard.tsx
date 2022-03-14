@@ -36,7 +36,7 @@ function ProductCard(props: ProductCardProps) {
 
   // Store Variables
   const dispatch = useDispatch();
-  const getBasketData = useSelector((state: RootState) => state?.basketReducer?.success);
+  const getBasketData = useSelector((state: RootState) => state?.basketReducer?.success?.data);
 
   // Add Basket Button Click
   const handleAddBasket = () => {
