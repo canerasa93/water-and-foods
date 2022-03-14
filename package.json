@@ -8,12 +8,10 @@
     "dev": "concurrently 'npm run start' 'npm run mock'",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "lint": "eslint . --ext .ts,.tsx,js,jsx",
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
     "format": "prettier --write .ts,.tsx,.js,.jsx,.json .",
     "tsc": "tsc",
-    "tsc:watch": "tsc --watch",
     "svgr": "svgr ./src/assets/icons -d ./src/components/icons --icon"
   },
   "dependencies": {
