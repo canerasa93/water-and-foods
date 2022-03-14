@@ -34,7 +34,7 @@ function Home() {
           filterButton: 'mug',
           brands: [],
           tags: [],
-          page: 0,
+          page: 1,
           sorting: 'lth'
         }
       }
@@ -48,7 +48,7 @@ function Home() {
         <ProductList data={arrayToPaginate(getProductsData, 16)?.[getMainStoreData?.filterParams?.page]} />
       </ContentBox>
 
-      <Pagination />
+      <Pagination data={getProductsData} />
     </Fragment>
   );
 }

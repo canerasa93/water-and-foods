@@ -4,7 +4,7 @@ import { StyledProductList } from './_productListStyle';
 // Import Components
 import ProductCard from '../product-card/ProductCard';
 
-type ProductCardData = {
+export type ProductCardData = {
   price: number;
   title: string;
   id: string;
