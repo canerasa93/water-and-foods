@@ -4,6 +4,7 @@ import productsReducer from './products/productsReducer';
 import tagsReducer from './tags/tagsReducer';
 import typesReducer from './types/typesReducer';
 import basketReducer from './basket/basketReducer'
+import mobileControlsReducer from './mobile-controls/mobileControlsReducer'
 
 const reducers = {
   globalReducer,
@@ -11,7 +12,8 @@ const reducers = {
   productsReducer,
   tagsReducer,
   typesReducer,
-  basketReducer
+  basketReducer,
+  mobileControlsReducer
 };
 
 export default reducers;

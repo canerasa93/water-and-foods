@@ -22,6 +22,7 @@ function Sidebar() {
   const dispatch = useDispatch();
   const getMainStoreData = useSelector((state: RootState) => state?.globalReducer?.success);
   const getProductsDataOrigin = useSelector((state: RootState) => state?.productsReducer?.success?.origin);
+  const getMobileFilter = useSelector((state: RootState) => state?.mobileControlsReducer?.success?.filter);
 
   // Get Filtered Data from Selected Tab
   const filterProductOriginByTab = (filterParam) => {
@@ -106,7 +107,7 @@ function Sidebar() {
   };
 
   return (
-    <StyledSidebar>
+    <StyledSidebar mobileActiveFilters={getMobileFilter}>
       {/* SORTING */}
       <Sorting />
 
