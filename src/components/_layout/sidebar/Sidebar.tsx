@@ -1,5 +1,4 @@
 // Import React
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Import Styled Components
@@ -7,57 +6,20 @@ import { StyledSidebar } from './_sidebarStyle';
 
 // Import Utils
 import { removeAccents } from 'src/common/utils/string/stringUtils';
-import {
-  countByKey,
-  getUniqueListBy,
-  sortAscByKey,
-  sortDateAscByKey,
-  sortDateDescByKey,
-  sortDescByKey
-} from 'src/common/utils/array/arrayUtils';
+import { getUniqueListBy } from 'src/common/utils/array/arrayUtils';
 
 // Import Store
-import { getCompanies } from 'src/store/actions/companies/getCompanies';
 import { RootState } from 'src/store/store';
 import * as types from 'src/store/action-types/types';
 
 // Import Components
-import SidebarCard from 'src/components/sidebar-card/SidebarCard';
-import Tags from './Tags';
+import Tags from './filters/Tags';
+import Brands from './filters/Brands';
+import Sorting from './filters/Sorting';
 
 function Sidebar() {
-  // Variables
-  const [filterData] = useState({
-    title: 'SORTING',
-    scrollable: false,
-    data: [
-      {
-        name: 'sorting_radios',
-        label: 'Price low to high',
-        id: 'lth'
-      },
-      {
-        name: 'sorting_radios',
-        label: 'Price high to low',
-        id: 'htl'
-      },
-      {
-        name: 'sorting_radios',
-        label: 'New to old',
-        id: 'nto'
-      },
-      {
-        name: 'sorting_radios',
-        label: 'Old to new',
-        id: 'otn'
-      }
-    ]
-  });
-
   // Store Variables
   const dispatch = useDispatch();
-  const getCompaniesData = useSelector((state: RootState) => state?.companiesReducer?.success);
-  const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success?.filtered);
   const getMainStoreData = useSelector((state: RootState) => state?.globalReducer?.success);
   const getProductsDataOrigin = useSelector((state: RootState) => state?.productsReducer?.success?.origin);
 
@@ -144,76 +106,15 @@ function Sidebar() {
     });
   };
 
-  // Handle Checkbox Change on Filter
-  const handleFilterRadioChange = (id: string) => {
-    if (id === filterData.data[0].id) {
-      //Price low to high
-      sortAscByKey(getProductsData, 'price');
-    } else if (id === filterData.data[1].id) {
-      //Price high to low
-      sortDescByKey(getProductsData, 'price');
-    } else if (id === filterData.data[2].id) {
-      // New to old
-      sortDateAscByKey(getProductsData, 'added');
-    } else {
-      // Old to new
-      sortDateDescByKey(getProductsData, 'added');
-    }
-
-    dispatch({
-      type: types.SUCCESS,
-      payload: {
-        filterParams: {
-          filterButton: getMainStoreData.filterParams.filterButton,
-          brands: getMainStoreData.filterParams.brands,
-          tags: getMainStoreData.filterParams.tags,
-          page: getMainStoreData.filterParams.page,
-          sorting: id
-        }
-      }
-    });
-  };
-
-  // Calculate Brand Counters
-  const calculateBrandCounters = () => {
-    getCompaniesData[0].count = filterProductOriginByTab(getMainStoreData?.filterParams?.filterButton).length;
-
-    getCompaniesData?.map((brandItem, index) => {
-      const count: number = countByKey(getProductsData, 'manufacturer', brandItem.id);
-      index !== 0 && (getCompaniesData[index].count = count);
-    });
-  };
-
-  
-
-  // Get Companies on Load Action
-  useEffect(() => {
-    !getCompaniesData && dispatch(getCompanies());
-  }, [getCompaniesData]);
-
-  // Run Brand Counters
-  useEffect(() => {
-    getCompaniesData && getProductsData && calculateBrandCounters();
-  }, [getCompaniesData, getProductsData]);
-
-  
-
   return (
     <StyledSidebar>
       {/* SORTING */}
-      <SidebarCard {...filterData} title="SORTING" handleOnChange={(_, id: string) => handleFilterRadioChange(id)} />
+      <Sorting />
 
-      {/* BRANDS */}
-      <SidebarCard
-        title={'BRANDS'}
-        scrollable={true}
-        data={getCompaniesData}
-        handleOnChange={(value: boolean, id: string) => handleFilterCheckboxChange(value, id, 'brands')}
-      />
+      <Brands onChange={handleFilterCheckboxChange} filterProductOriginByTab={filterProductOriginByTab} />
 
       {/* TAGS */}
-      <Tags onChange={handleFilterCheckboxChange} filterProductOriginByTab={filterProductOriginByTab}/>
-      
+      <Tags onChange={handleFilterCheckboxChange} filterProductOriginByTab={filterProductOriginByTab} />
     </StyledSidebar>
   );
 }

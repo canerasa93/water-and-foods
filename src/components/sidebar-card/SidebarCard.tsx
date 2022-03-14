@@ -64,8 +64,6 @@ function SidebarCard(props: SidebarCardProps) {
     handleOnChange && handleOnChange(value, name);
   };
 
-
-
   return (
     <StyledSidebarCard>
       <StyledSidebarCardTitle>
@@ -109,7 +107,6 @@ function SidebarCard(props: SidebarCardProps) {
                   }
                   handleOnChange={(value, id) => handleFilterChange(value, id)}
                   key={item.id}
-                  
                 />
               );
             })}
