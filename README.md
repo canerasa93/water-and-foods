@@ -2,11 +2,11 @@
 
 - Ihytiyaç duyacağımız Prettier, Eslint ve Typescript paketlerini aşağıdaki komutları kullanarak global olarak bilgisayara yüklüyoruz.
 
-npm install --global prettier
+`npm install --global prettier
 npm install -g eslint
 npm install typescript -g
 npm install -g babel-eslint
-npm install -g json-server
+npm install -g json-server`
 
 - VS Code IDE'sinde code format için
   [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) eklentisini kullanacağız.
