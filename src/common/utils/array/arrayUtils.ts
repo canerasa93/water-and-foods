@@ -96,3 +96,11 @@ export function countAndOverrite(arr, key) {
 
   return result;
 }
+
+export const removeItemFromArrayById = (arr, filterKey) => {
+  const result = arr.filter(function(item) {
+    return item.id !== filterKey
+})
+
+  return result;
+};

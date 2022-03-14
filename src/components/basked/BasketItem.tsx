@@ -1,5 +1,5 @@
 // Import React
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Import Styled Components
 import {
@@ -18,13 +18,14 @@ import { ICON_SIZES } from 'src/common/constants/icon/iconSizes';
 
 // Import Store
 import { basketItemControl } from 'src/store/actions/basket/basketItemControl';
+import { removeFromBasket } from 'src/store/actions/basket/removeFromBasket';
+import { RootState } from 'src/store/store';
 
 // Import Utils
 import { getFormattedAmount } from 'src/common/utils/amount/amountUtil';
 
 // Import Components
 import CustomIcon from '../custom-icon/CustomIcon';
-
 
 interface BasketItem {
   name: string;
@@ -40,16 +41,33 @@ function BasketItem(props) {
 
   // Store Variables
   const dispatch = useDispatch();
+  const getBasketData = useSelector((state: RootState) => state?.basketReducer?.success?.data);
 
   // Descrease Basket Item
   const decrease = () => {
-    dispatch(basketItemControl(id, 'decrease'))
-  }
+    let isValueBiggerThenOne = false;
 
-   // Increase Basket Item
-   const increase = () => {
-    dispatch(basketItemControl(id, 'increase'))
-  }
+    getBasketData?.find((item) => {
+      if (item.id === props.id) {
+        if (item.inventory > 1) {
+          isValueBiggerThenOne = true;
+        } else {
+          isValueBiggerThenOne = false;
+        }
+      }
+    });
+
+    if (isValueBiggerThenOne) {
+      dispatch(basketItemControl(id, 'decrease'));
+    } else {
+      dispatch(removeFromBasket(id));
+    }
+  };
+
+  // Increase Basket Item
+  const increase = () => {
+    dispatch(basketItemControl(id, 'increase'));
+  };
 
   return (
     <StyledBasketItemWrapper>

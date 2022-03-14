@@ -1,3 +1,7 @@
+// Import Utils
+import { removeItemFromArrayById } from 'src/common/utils/array/arrayUtils';
+
+// Import Types
 import * as types from 'src/store/action-types/types';
 
 const initialState: any = {
@@ -14,8 +18,7 @@ export default function basketReducer(state = initialState, action) {
         ...state,
         success: {
           ...state.success,
-          data: [...state.success.data, { ...action.payload, inventory: 1 }],
-          
+          data: [...state.success.data, { ...action.payload, inventory: 1 }]
         }
       };
     case types.BASKET_INCREASE:
@@ -41,6 +44,14 @@ export default function basketReducer(state = initialState, action) {
                 }
               : product
           )
+        }
+      };
+    case types.BASKET_DELETE:
+      return {
+        ...state,
+        success: {
+          ...state.success,
+          data: removeItemFromArrayById(state.success.data, action.payload)
         }
       };
     case types.BASKET_TOTAL_PRICE_UPDATE:
