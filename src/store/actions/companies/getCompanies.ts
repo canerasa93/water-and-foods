@@ -41,7 +41,7 @@ export const getCompanies = () => (dispatch: (arg0: { type: string; payload: any
   };
 
   axios
-    .get('http://localhost:3010/companies', {
+    .get(`${process.env.REACT_APP_API_URL}/companies`, {
       headers: config.headers
     })
     .then((res) => {

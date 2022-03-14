@@ -8,9 +8,9 @@
   },
   "scripts": {
     "mock": "json-server --watch ./mock/db.js --port 3010",
-    "start": "react-scripts start",
-    "dev": "concurrently 'npm run start' 'npm run mock'",
-    "build": "react-scripts build",
+    "start": "env-cmd -f env/.env.dev react-scripts start",
+    "dev": "concurrently 'env-cmd -f env/.env.dev npm run start' 'npm run mock'",
+    "build": "env-cmd -f env/.env.dev react-scripts build",
     "test": "react-scripts test",
     "lint": "eslint . --ext .ts,.tsx,js,jsx",
     "lint:fix": "eslint --fix --ext .ts,.tsx .",
@@ -29,6 +29,8 @@
     "axios": "^0.26.1",
     "babel": "^6.23.0",
     "concurrently": "^7.0.0",
+    "env-cmd": "^10.1.0",
+    "express": "^4.17.3",
     "globally": "^0.0.0",
     "i18next": "^20.4.0",
     "json-server": "^0.17.0",
@@ -82,6 +84,7 @@
     "prettier-eslint": "^12.0.0",
     "react-test-renderer": "^17.0.2"
   },
+  "proxy": "http://localhost:8080",
   "eslintConfig": {
     "extends": [
       "react-app",

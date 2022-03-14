@@ -38,7 +38,7 @@ export const getProducts = () => (dispatch: (arg0: { type: string; payload: any 
   };
 
   axios
-    .get('http://localhost:3010/items', {
+    .get(`${process.env.REACT_APP_API_URL}/items`, {
       headers: config.headers
     })
     .then((res) => {
