@@ -48,7 +48,7 @@ export const getCompanies = () => (dispatch: (arg0: { type: string; payload: any
       // success: response payload
       dispatch({
         type: types.COMPANIES_SUCCESS,
-        payload: reFormatBrandsData(res.data.companies)
+        payload: reFormatBrandsData(res?.data)
       });
     })
     .catch((err) => {

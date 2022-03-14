@@ -44,9 +44,10 @@ export const getProducts = () => (dispatch: (arg0: { type: string; payload: any 
     .then((res) => {
       // success: response payload
       // Dispatch Products
+
       dispatch({
         type: types.PRODUCT_LIST_SUCCESS,
-        payload: reFormatProducts(res?.data?.items)
+        payload: reFormatProducts(res?.data)
       });
     })
     .catch((err) => {

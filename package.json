@@ -6,10 +6,11 @@
     "node": "14.17.3",
     "npm": "6.14.13"
   },
+  "homepage": ".",
   "scripts": {
     "mock": "json-server --watch ./mock/db.js --port 3010",
     "start": "env-cmd -f env/.env.dev react-scripts start",
-    "dev": "concurrently 'env-cmd -f env/.env.dev npm run start' 'npm run mock'",
+    "dev": "concurrently 'env-cmd -f env/.env.dev npm run start' 'node server.js'",
     "build": "env-cmd -f env/.env.dev react-scripts build",
     "test": "react-scripts test",
     "lint": "eslint . --ext .ts,.tsx,js,jsx",
@@ -18,6 +19,7 @@
     "tsc": "tsc",
     "svgr": "svgr ./src/assets/icons -d ./src/components/icons --icon"
   },
+  "proxy": "http://localhost:3010",
   "dependencies": {
     "@svgr/cli": "^6.2.1",
     "@testing-library/jest-dom": "^5.16.2",
@@ -33,6 +35,7 @@
     "express": "^4.17.3",
     "globally": "^0.0.0",
     "i18next": "^20.4.0",
+    "json-merger": "^1.1.7",
     "json-server": "^0.17.0",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
