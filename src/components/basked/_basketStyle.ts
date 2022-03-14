@@ -29,6 +29,7 @@ export const StyledBasketItemWrapper = styled.div`
 export const StyledBasketItemContent = styled.div`
   display: inline-flex;
   flex-direction: column;
+  padding-right: 20px;
 `;
 
 export const StyledBasketItemControls = styled.div`
