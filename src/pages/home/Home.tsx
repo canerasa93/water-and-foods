@@ -19,6 +19,7 @@ function Home() {
   // Store Variables
   const dispatch = useDispatch();
   const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success?.filtered);
+  const getMainStoreData = useSelector((state: RootState) => state?.globalReducer?.success);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPageData, setCurrentPageData] = useState();
 
@@ -53,7 +54,7 @@ function Home() {
 
   useEffect(() => {
     currentData();
-  }, [getProductsData, currentPage]);
+  }, [getProductsData, currentPage, getMainStoreData]);
 
   return (
     <Fragment>

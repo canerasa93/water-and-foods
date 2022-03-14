@@ -110,6 +110,7 @@ function Sidebar() {
       {/* SORTING */}
       <Sorting />
 
+      {/* BRANDS */}
       <Brands onChange={handleFilterCheckboxChange} filterProductOriginByTab={filterProductOriginByTab} />
 
       {/* TAGS */}
