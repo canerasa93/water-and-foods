@@ -6,7 +6,7 @@ export const StyledContainer = styled.div`
   padding: 0 15px;
   display: flex;
   justify-content: center;
-  @media screen and (max-width: 960px){
+  @media screen and (max-width: 960px) {
     padding: 0 0;
   }
 `;

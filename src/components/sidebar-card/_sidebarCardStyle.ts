@@ -29,7 +29,7 @@ export const StyledSidebarCardBoxContainer = styled.div`
   max-height: ${(props) => (props.scrollable ? '140px' : 'auto')};
   margin-top: ${(props) => (props.scrollable ? '17px' : '0px')};
   padding-top: ${(props) => (props.scrollable ? '5px' : '0px')};
-  @media screen and (max-width: 767px){
+  @media screen and (max-width: 767px) {
     height: ${(props) => (props.scrollable ? '110px' : 'auto')};
     max-height: ${(props) => (props.scrollable ? '110px' : 'auto')};
   }

@@ -13,7 +13,7 @@ export const StyledRadioWrapper = styled.div`
   display: block;
   margin-bottom: 10px;
   padding: 5px 0;
-  &:last-child{
+  &:last-child {
     margin-bottom: 5px;
   }
 `;

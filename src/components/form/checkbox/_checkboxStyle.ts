@@ -12,7 +12,7 @@ import unCheckImg from '../../../assets/images/checkbox_unselect.svg';
 export const StyledCheckboxWrapper = styled.div`
   display: block;
   margin-bottom: 16px;
-  &:last-child{
+  &:last-child {
     margin-bottom: 5px;
   }
 `;

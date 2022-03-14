@@ -24,7 +24,7 @@ export const StyledInput = styled.input`
     color: ${THEME.COLORS.GRAY_7};
   }
 
-  @media screen and (max-width: 767px){
+  @media screen and (max-width: 767px) {
     padding: 10px 10px;
   }
 `;

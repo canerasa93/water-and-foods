@@ -31,7 +31,7 @@ export const StyledPaginationControl = styled.button`
   &:hover {
     opacity: 0.7;
   }
-  @media screen and (max-width: 400px){
+  @media screen and (max-width: 400px) {
     flex-direction: column;
   }
 `;
@@ -40,10 +40,10 @@ export const StyledPaginationList = styled.div`
   display: inline-flex;
   align-items: center;
   margin: 0 35px;
-  @media screen and (max-width: 1024px){
+  @media screen and (max-width: 1024px) {
     margin: 0 15px;
   }
-  @media screen and (max-width: 500px){
+  @media screen and (max-width: 500px) {
     margin: 0 0px;
   }
 `;
@@ -53,11 +53,11 @@ export const StyledControlLabel = styled.span`
   font-weight: ${THEME.FONT.SEMIBOLD};
   font-size: 14px;
   margin: 0 14px;
-  @media screen and (max-width: 500px){
+  @media screen and (max-width: 500px) {
     font-size: 12px;
     margin: 0 12px;
   }
-  @media screen and (max-width: 400px){
+  @media screen and (max-width: 400px) {
     margin: 5px 14px;
   }
 `;
@@ -86,7 +86,7 @@ export const StyledPaginationNumber = styled.button`
   &:hover {
     color: ${(props) => !props.active && THEME.COLORS.BLUE_1};
   }
-  @media screen and (max-width: 500px){
+  @media screen and (max-width: 500px) {
     font-size: 12px;
     padding: 12px 10px;
   }

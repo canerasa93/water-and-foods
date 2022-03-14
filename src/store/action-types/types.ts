@@ -20,5 +20,3 @@ export const BASKET_DELETE = 'BASKET_DELETE';
 
 export const MOBILE_BASKET = 'MOBILE_BASKET';
 export const MOBILE_FILTER = 'MOBILE_FILTER';
-
-

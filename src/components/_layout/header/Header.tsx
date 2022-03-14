@@ -27,13 +27,13 @@ import CustomIcon from 'src/components/custom-icon/CustomIcon';
 
 function Header() {
   // Store Variables
-  const dispatch =  useDispatch();
+  const dispatch = useDispatch();
   const getBasketDataTotal = useSelector((state: RootState) => state?.basketReducer?.success?.total);
   const getMobileBasket = useSelector((state: RootState) => state?.mobileControlsReducer?.success?.basket);
 
   // Mobile on Basket Click
   const handleMobileBasket = () => {
-    dispatch(setMobileBasket(!getMobileBasket))
+    dispatch(setMobileBasket(!getMobileBasket));
   };
 
   return (

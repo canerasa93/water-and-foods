@@ -10,7 +10,7 @@ export const StyledMainSection = styled.section`
   @media screen and (max-width: 960px) {
     margin: 0 0 0 15px;
   }
-  @media screen and (max-width: 500px){
+  @media screen and (max-width: 500px) {
     display: block;
     flex: initial;
     flex-direction: initial;

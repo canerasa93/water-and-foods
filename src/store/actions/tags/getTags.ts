@@ -17,13 +17,12 @@ const calculateTagsCounters = (tag, productData) => {
   let tagDataCount = 0;
 
   productData?.map((product) => {
-    if(product?.tags?.includes(tag)) {
-      tagDataCount = tagDataCount + 1
+    if (product?.tags?.includes(tag)) {
+      tagDataCount = tagDataCount + 1;
     }
   });
 
   return tagDataCount;
-  
 };
 
 //This function makes tag data from all products

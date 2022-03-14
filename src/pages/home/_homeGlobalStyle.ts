@@ -11,7 +11,7 @@ export const StyledProductTopLine = styled.div`
   justify-content: flex-start;
   align-content: center;
   align-items: center;
-  
+
   margin-bottom: 10px;
 `;
 

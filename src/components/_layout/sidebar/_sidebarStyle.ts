@@ -40,7 +40,7 @@ export const StyledSidebar = styled.aside`
   }
 
   @media screen and (max-width: 730px) {
-    margin-left: ${(props) => props.mobileActiveFilters === true ? '0' : '-225px'};
+    margin-left: ${(props) => (props.mobileActiveFilters === true ? '0' : '-225px')};
     top: 0;
     position: relative;
     transition: all linear 250ms;
@@ -66,6 +66,6 @@ export const StyledSidebarRight = styled.aside`
     top: 70px;
     z-index: 999;
     max-width: 330px;
-    display: ${(props) => props.mobileActiveBasket === true ? 'initial' : 'none'};
+    display: ${(props) => (props.mobileActiveBasket === true ? 'initial' : 'none')};
   }
 `;

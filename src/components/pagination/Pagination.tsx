@@ -26,13 +26,12 @@ const Pagination = (props) => {
   // Desctruct Props
   const { onPageChange, totalCount, siblingCount = 1, currentPage, pageSize } = props;
 
-  const paginationRange =
-    usePagination({
-      currentPage,
-      totalCount,
-      siblingCount,
-      pageSize
-    });
+  const paginationRange = usePagination({
+    currentPage,
+    totalCount,
+    siblingCount,
+    pageSize
+  });
 
   if (currentPage === 0 || paginationRange?.length < 2) {
     return null;
