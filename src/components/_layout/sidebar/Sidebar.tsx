@@ -9,7 +9,6 @@ import { StyledSidebar } from './_sidebarStyle';
 import { removeAccents } from 'src/common/utils/string/stringUtils';
 import {
   countByKey,
-  countByFind,
   getUniqueListBy,
   sortAscByKey,
   sortDateAscByKey,
@@ -19,12 +18,12 @@ import {
 
 // Import Store
 import { getCompanies } from 'src/store/actions/companies/getCompanies';
-import { getTags } from 'src/store/actions/tags/getTags';
 import { RootState } from 'src/store/store';
 import * as types from 'src/store/action-types/types';
 
 // Import Components
 import SidebarCard from 'src/components/sidebar-card/SidebarCard';
+import Tags from './Tags';
 
 function Sidebar() {
   // Variables
@@ -59,7 +58,6 @@ function Sidebar() {
   const dispatch = useDispatch();
   const getCompaniesData = useSelector((state: RootState) => state?.companiesReducer?.success);
   const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success?.filtered);
-  const getTagsData = useSelector((state: RootState) => state?.tagsReducer?.success);
   const getMainStoreData = useSelector((state: RootState) => state?.globalReducer?.success);
   const getProductsDataOrigin = useSelector((state: RootState) => state?.productsReducer?.success?.origin);
 
@@ -186,35 +184,7 @@ function Sidebar() {
     });
   };
 
-  // Calculate Tags Counters
-  const calculateTagsCounters = () => {
-    let tagsDataWithCount: any = [];
-
-    getTagsData?.map((tagItem, index) => {
-      const count: number = countByFind(getProductsData, 'tags', tagItem.label);
-
-      tagsDataWithCount[index] = {
-        name: getTagsData[index].name,
-        label: getTagsData[index].label,
-        id: getTagsData[index].id,
-        count: count
-      };
-    });
-
-    let allTagsCount = 0;
-    filterProductOriginByTab(
-      filterProductOriginByTab(getMainStoreData?.filterParams?.filterButton)?.map((product) => {
-        product.tags.length > 0 && allTagsCount++;
-      })
-    );
-
-    tagsDataWithCount[0].count = allTagsCount;
-
-    dispatch({
-      type: types.TAGS_SUCCESS,
-      payload: tagsDataWithCount
-    });
-  };
+  
 
   // Get Companies on Load Action
   useEffect(() => {
@@ -226,15 +196,7 @@ function Sidebar() {
     getCompaniesData && getProductsData && calculateBrandCounters();
   }, [getCompaniesData, getProductsData]);
 
-  // Get Tags on Load Action
-  useEffect(() => {
-    getProductsData && dispatch(getTags(getProductsData));
-  }, [getProductsData]);
-
-  // Run Tag Counters
-  useEffect(() => {
-    getProductsData && getMainStoreData && getTagsData && calculateTagsCounters();
-  }, [getMainStoreData, getTagsData, getProductsData]);
+  
 
   return (
     <StyledSidebar>
@@ -250,12 +212,8 @@ function Sidebar() {
       />
 
       {/* TAGS */}
-      <SidebarCard
-        title={'TAGS'}
-        scrollable={true}
-        data={getTagsData}
-        handleOnChange={(value: boolean, id: string) => handleFilterCheckboxChange(value, id, 'tags')}
-      />
+      <Tags onChange={handleFilterCheckboxChange} filterProductOriginByTab={filterProductOriginByTab}/>
+      
     </StyledSidebar>
   );
 }
