@@ -1,5 +1,5 @@
 // Import React
-import { Fragment, useEffect, useState, useMemo } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Import Store
@@ -23,12 +23,18 @@ function Home() {
   const dispatch = useDispatch();
   const getProductsData = useSelector((state: RootState) => state?.productsReducer?.success?.filtered);
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentPageData, setCurrentPageData] = useState();
 
-  const currentData = useMemo(() => {
+  const currentData = () => {
+    let result;
+
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    return getProductsData && getProductsData?.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage]);
+
+    result = getProductsData && getProductsData?.slice(firstPageIndex, lastPageIndex);
+
+    setCurrentPageData(result);
+  };
 
   useEffect(() => {
     // Get Products on Load
@@ -48,11 +54,15 @@ function Home() {
     });
   }, []);
 
+  useEffect(() => {
+    currentData();
+  }, [getProductsData, currentPage]);
+
   return (
     <Fragment>
       <FilterButtons />
       <ContentBox>
-        <ProductList data={currentData} />
+        <ProductList data={currentPageData} />
       </ContentBox>
 
       <Pagination
