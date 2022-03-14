@@ -1,6 +1,8 @@
 // Import React
-import { Fragment, ReactNode } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { Fragment } from 'react';
+
+import { usePagination, DOTS } from './usePagination';
+
 // Import Styled Components
 import {
   StyledPaginationWrapper,
@@ -12,10 +14,6 @@ import {
   StyledPaginationDots
 } from './_paginationStyle';
 
-// Import Store
-import { RootState } from 'src/store/store';
-import * as types from 'src/store/action-types/types';
-
 // Import Constants
 import { ICON_LIST } from 'src/common/constants/icon/iconList';
 
@@ -23,106 +21,69 @@ import { ICON_LIST } from 'src/common/constants/icon/iconList';
 import CustomIcon from '../custom-icon/CustomIcon';
 import { ICON_SIZES } from 'src/common/constants/icon/iconSizes';
 import { ICON_STATUS } from 'src/common/constants/icon/iconStatus';
-import { ProductCardData } from '../product-list/ProductList';
 
-interface PaginationProps {
-  data: Array<ProductCardData>;
-}
-
-function Pagination(props: PaginationProps) {
+const Pagination = (props) => {
   // Desctruct Props
-  const { data } = props;
+  const { onPageChange, totalCount, siblingCount = 1, currentPage, pageSize } = props;
 
-  // Store Variables
-  const dispatch = useDispatch();
-  const getMainStoreData = useSelector((state: RootState) => state?.globalReducer?.success);
+  const paginationRange =
+    usePagination({
+      currentPage,
+      totalCount,
+      siblingCount,
+      pageSize
+    }) || [];
 
-  // Handle Change Pagination
-  const handleChangePagination = (value) => {
-    dispatch({
-      type: types.SUCCESS,
-      payload: {
-        filterParams: {
-          filterButton: getMainStoreData.filterParams.filterButton,
-          brands: getMainStoreData.filterParams.brands,
-          tags: getMainStoreData.filterParams.tags,
-          page: value,
-          sorting: getMainStoreData.filterParams.id
-        }
-      }
-    });
+  if (currentPage === 0 || paginationRange.length < 2) {
+    return null;
+  }
+
+  const onNext = () => {
+    onPageChange(currentPage + 1);
   };
 
-  // Render Numbers Function
-  const renderNumbers = (): ReactNode => {
-    let firstFourthNumbers: Array<number> = [];
-    let lastFourthNumbers: Array<number> = [];
-    const totalPages: number = Math.round(data?.length / 16);
-
-    for (let index = 0; index < totalPages; index++) {
-      if (index + 1 <= 4) {
-        firstFourthNumbers.push(index + 1);
-      }
-
-      if (index + 1 >= totalPages - 3) {
-        lastFourthNumbers.push(index + 1);
-      }
-    }
-
-    return (
-      <StyledPaginationList>
-        <Fragment>
-          {firstFourthNumbers &&
-            firstFourthNumbers?.map((item) => (
-              <StyledPaginationNumber
-                key={item}
-                onClick={() => handleChangePagination(item)}
-                active={getMainStoreData?.filterParams?.page === item}
-              >
-                {item}
-              </StyledPaginationNumber>
-            ))}
-        </Fragment>
-        {totalPages > 4 && (
-          <Fragment>
-            <StyledPaginationDots>...</StyledPaginationDots>
-          </Fragment>
-        )}
-
-        <Fragment>
-          {totalPages > 4 &&
-            lastFourthNumbers &&
-            lastFourthNumbers?.map((item) => (
-              <StyledPaginationNumber
-                key={item}
-                onClick={() => handleChangePagination(item)}
-                active={getMainStoreData?.filterParams?.page === item}
-              >
-                {item}
-              </StyledPaginationNumber>
-            ))}
-        </Fragment>
-      </StyledPaginationList>
-    );
+  const onPrevious = () => {
+    onPageChange(currentPage - 1);
   };
 
+  let lastPage = paginationRange[paginationRange.length - 1];
   return (
     <StyledPaginationWrapper>
       <StyledPaginationContainer>
-        <StyledPaginationControl>
+        <StyledPaginationControl onClick={onPrevious} disabled={currentPage === 1}>
           <CustomIcon name={ICON_LIST.ARROW_PREV} size={ICON_SIZES.SMALL} status={ICON_STATUS.PRIMARY} />
           <StyledControlLabel primary>Prev</StyledControlLabel>
         </StyledPaginationControl>
 
-        {renderNumbers()}
+        <StyledPaginationList>
+          {paginationRange?.map((pageNumber, index) => {
+            if (pageNumber === DOTS) {
+              return (
+                <Fragment key={pageNumber + '-' + index}>
+                  <StyledPaginationDots>&#8230;</StyledPaginationDots>
+                </Fragment>
+              );
+            }
 
-        <StyledPaginationControl>
+            return (
+              <StyledPaginationNumber
+                key={pageNumber + '-' + index}
+                onClick={() => onPageChange(pageNumber)}
+                active={pageNumber === currentPage}
+              >
+                {pageNumber}
+              </StyledPaginationNumber>
+            );
+          })}
+        </StyledPaginationList>
+
+        <StyledPaginationControl onClick={onNext} disabled={currentPage === lastPage}>
           <StyledControlLabel>Next</StyledControlLabel>
           <CustomIcon name={ICON_LIST.ARROW_NEXT} size={ICON_SIZES.SMALL} status={ICON_STATUS.SECONDARY} />
         </StyledPaginationControl>
       </StyledPaginationContainer>
     </StyledPaginationWrapper>
   );
-}
+};
 
 export default Pagination;

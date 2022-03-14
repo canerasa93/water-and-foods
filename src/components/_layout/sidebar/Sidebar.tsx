@@ -99,7 +99,6 @@ function Sidebar() {
           filterButton: getMainStoreData.filterParams.filterButton,
           brands: filterName === 'brands' ? data : getMainStoreData.filterParams.brands,
           tags: filterName === 'tags' ? data : getMainStoreData.filterParams.tags,
-          page: getMainStoreData.filterParams.page,
           sorting: getMainStoreData.filterParams.sorting
         }
       }

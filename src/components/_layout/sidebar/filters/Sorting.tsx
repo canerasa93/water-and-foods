@@ -74,7 +74,6 @@ function Sorting(props: SortingProps) {
           filterButton: getMainStoreData.filterParams.filterButton,
           brands: getMainStoreData.filterParams.brands,
           tags: getMainStoreData.filterParams.tags,
-          page: getMainStoreData.filterParams.page,
           sorting: id
         }
       }
