@@ -87,3 +87,25 @@ export const StyledBasketTotalPrice = styled.div`
   color: ${THEME.COLORS.BLUE_1};
   padding: 15px 20px;
 `;
+
+export const StyledNullBasket = styled.div`
+  display: ${(props) => (props.visible ? 'flex' : 'none')};
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const StyledNullBasketTitle = styled.span`
+  font-size: 14px;
+  font-weight: ${THEME.FONT.SEMIBOLD};
+  color: ${THEME.COLORS.BLUE_1};
+  text-align: center;
+  margin-top: 10px;
+`;
+export const StyledNullBasketSubTitle = styled.span`
+  font-size: 12px;
+  font-weight: ${THEME.FONT.SEMIBOLD};
+  color: ${THEME.COLORS.GRAY_2};
+  text-align: center;
+  margin-top: 10px;
+`;
