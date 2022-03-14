@@ -6,6 +6,9 @@ export const StyledContainer = styled.div`
   padding: 0 15px;
   display: flex;
   justify-content: center;
+  @media screen and (max-width: 960px){
+    padding: 0 0;
+  }
 `;
 
 export const StyledCenterContent = styled.div`

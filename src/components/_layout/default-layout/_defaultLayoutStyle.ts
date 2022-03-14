@@ -14,4 +14,7 @@ export const StyledDefaultLayout = styled.div`
 
 export const StyledMain = styled.div`
   margin-top: 45px;
+  @media screen and (max-width: 960px){
+    padding: 0 15px;
+  }
 `;

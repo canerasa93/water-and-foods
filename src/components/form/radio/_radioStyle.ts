@@ -11,7 +11,11 @@ import unCheckImg from '../../../assets/images/radio_unselect.svg';
 // Styled Components
 export const StyledRadioWrapper = styled.div`
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
+  padding: 5px 0;
+  &:last-child{
+    margin-bottom: 5px;
+  }
 `;
 
 export const StyledRadioLabel = styled.label`

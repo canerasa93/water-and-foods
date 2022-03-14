@@ -10,6 +10,32 @@ export const StyledProductCard = styled.div`
   padding: 10px;
   display: inline-flex;
   flex-direction: column;
+  @media screen and (max-width: 1240px){
+    width: calc(33.3% - 20px);
+  }
+  @media screen and (max-width: 1024px){
+    width: calc(50% - 20px);
+  }
+
+  @media screen and (max-width: 960px){
+    width: calc(33.3% - 20px);
+  }
+
+  @media screen and (max-width: 767px){
+    width: calc(50% - 20px);
+  }
+
+  @media screen and (max-width: 730px){
+    width: calc(33.3% - 20px);
+  }
+
+  @media screen and (max-width: 640px){
+    width: calc(50% - 20px);
+  }
+
+  @media screen and (max-width: 400px){
+    width: 100%;
+  }
 `;
 
 export const StyledCardBottomWrapper = styled.div`

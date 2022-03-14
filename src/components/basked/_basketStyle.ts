@@ -14,6 +14,26 @@ export const StyledBasketWrapper = styled.section`
   background-color: ${THEME.COLORS.WHITE};
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 960px) {
+    &:after {
+      content: '';
+      position: fixed;
+      right: 45px;
+      top: 59px;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 12px solid ${THEME.COLORS.BLUE_1};
+      z-index: 98;
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 250px;
+  }
 `;
 
 export const StyledBasketItemWrapper = styled.div`
@@ -86,6 +106,9 @@ export const StyledBasketTotalPrice = styled.div`
   font-weight: ${THEME.FONT.SEMIBOLD};
   color: ${THEME.COLORS.BLUE_1};
   padding: 15px 20px;
+  @media screen and (max-width: 960px) {
+    display: none;
+  }
 `;
 
 export const StyledNullBasket = styled.div`

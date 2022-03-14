@@ -23,4 +23,8 @@ export const StyledInput = styled.input`
     font-weight: ${THEME.FONT.REGULAR};
     color: ${THEME.COLORS.GRAY_7};
   }
+
+  @media screen and (max-width: 767px){
+    padding: 10px 10px;
+  }
 `;

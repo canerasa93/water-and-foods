@@ -23,6 +23,15 @@ export const StyledHeaderCenter = styled.div`
   flex-direction: row;
   padding: 15px 15px;
   text-align: center;
+  @media screen and (max-width: 1024px){
+    padding: 10px 15px;
+  }
+  @media screen and (max-width: 960px){
+    padding: 10px 0;
+  }
+  @media screen and (max-width: 500px){
+    flex: initial;
+  }
 `;
 
 export const StyledLogo = styled.a`
@@ -30,6 +39,16 @@ export const StyledLogo = styled.a`
   height: 40px;
   background: url(${logo}) no-repeat;
   display: inline-block;
+  background-size: 100%;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  @media screen and (max-width: 1024px){
+    width: 106px;
+    height: 30px;
+  }
+  @media screen and (max-width: 500px){
+    margin-left: 15px;
+  }
 `;
 export const StyledHeaderRight = styled.div`
   display: inline-flex;
