@@ -1,3 +1,6 @@
+// Import React
+import { useDispatch } from 'react-redux';
+
 // Import Constants
 import { getFormattedAmount } from 'src/common/utils/amount/amountUtil';
 
@@ -12,6 +15,9 @@ import {
   StyledCardBottomWrapper
 } from './_productCardStyle';
 
+// Import Store
+import { addToBasket } from 'src/store/actions/basket/addToBasket';
+
 // Import Components
 import Button from '../button/Button';
 import { BUTTON_SIZES, BUTTON_TYPES } from 'src/common/constants/button/buttonConstants';
@@ -24,7 +30,15 @@ interface ProductCardProps {
 
 function ProductCard(props: ProductCardProps) {
   // Desctruct Props
-  const { price, title, id } = props;
+  const { price, title } = props;
+
+  // Store Variables
+  const dispatch = useDispatch();
+
+  // Add Basket Button Click
+  const handleAddBasket = () => {
+    dispatch(addToBasket(props));
+  };
 
   return (
     <StyledProductCard>
@@ -48,7 +62,7 @@ function ProductCard(props: ProductCardProps) {
           label="GLOBAL.CTA.BUTTONS.ADD"
           display={BUTTON_TYPES.BLOCK}
           size={BUTTON_SIZES.SMALL}
-          handleOnClick={() => console.log('id: ', id)}
+          handleOnClick={() => handleAddBasket()}
         />
       </StyledCardBottomWrapper>
     </StyledProductCard>

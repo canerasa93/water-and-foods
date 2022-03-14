@@ -7,9 +7,6 @@ import { getProducts } from 'src/store/actions/products/getProducts';
 import { RootState } from 'src/store/store';
 import * as types from 'src/store/action-types/types';
 
-// Import Utils
-// import { arrayToPaginate } from 'src/common/utils/array/arrayUtils';
-
 // Import Components
 import FilterButtons from 'src/components/filter-buttons/FilterButtons';
 import ContentBox from 'src/components/content-box/ContentBox';

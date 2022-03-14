@@ -19,13 +19,23 @@ import { getFormattedAmount } from 'src/common/utils/amount/amountUtil';
 // Import Components
 import CustomIcon from '../custom-icon/CustomIcon';
 
-function BasketItem() {
+interface BasketItem {
+  name: string;
+  title: string;
+  id: string;
+  price: number;
+}
+
+function BasketItem(props) {
+  // Desctruct Props
+  const { name, price } = props;
+
   return (
     <StyledBasketItemWrapper>
       {/* Texts */}
       <StyledBasketItemContent>
-        <StyledBasketItemTitle>Gorgeous Office Mug</StyledBasketItemTitle>
-        <StyledBasketItemPrice>{getFormattedAmount(14.99)}</StyledBasketItemPrice>
+        <StyledBasketItemTitle>{name}</StyledBasketItemTitle>
+        <StyledBasketItemPrice>{getFormattedAmount(price)}</StyledBasketItemPrice>
       </StyledBasketItemContent>
       {/* Controls */}
       <StyledBasketItemControls>
