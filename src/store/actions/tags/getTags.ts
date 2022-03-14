@@ -12,8 +12,22 @@ type TagsCardType = {
   tags: Array<string>;
 };
 
+// Calculate Tags Counters
+const calculateTagsCounters = (tag, productData) => {
+  let tagDataCount = 0;
+
+  productData?.map((product) => {
+    if(product?.tags?.includes(tag)) {
+      tagDataCount = tagDataCount + 1
+    }
+  });
+
+  return tagDataCount;
+  
+};
+
 //This function makes tag data from all products
-const createTagsData = (data: Array<TagsCardType>) => {
+const createTagsData = (data: Array<TagsCardType>, selectedTags) => {
   let result: Array<Record<string, string | number>> = [];
 
   const dataAll = [
@@ -33,7 +47,7 @@ const createTagsData = (data: Array<TagsCardType>) => {
             name: tag,
             label: tag,
             id: tag,
-            count: 0
+            count: calculateTagsCounters(tag, selectedTags)
           });
         });
       }
@@ -46,9 +60,9 @@ const createTagsData = (data: Array<TagsCardType>) => {
   return removeDuplicates;
 };
 
-export const getTags = (value) => (dispatch: (arg0: { type: string; payload: any }) => void) => {
+export const getTags = (value, selectedTags) => (dispatch: (arg0: { type: string; payload: any }) => void) => {
   dispatch({
     type: types.TAGS_SUCCESS,
-    payload: createTagsData(value)
+    payload: createTagsData(value, selectedTags)
   });
 };

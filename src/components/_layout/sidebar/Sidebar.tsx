@@ -114,7 +114,7 @@ function Sidebar() {
       <Brands onChange={handleFilterCheckboxChange} filterProductOriginByTab={filterProductOriginByTab} />
 
       {/* TAGS */}
-      <Tags onChange={handleFilterCheckboxChange} filterProductOriginByTab={filterProductOriginByTab} />
+      <Tags onChange={handleFilterCheckboxChange} />
     </StyledSidebar>
   );
 }
