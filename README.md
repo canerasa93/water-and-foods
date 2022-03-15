@@ -2,11 +2,7 @@
 
 - Ihytiyaç duyacağımız Prettier, Eslint ve Typescript paketlerini aşağıdaki komutları kullanarak global olarak bilgisayara yüklüyoruz.
 
-`npm install --global prettier
-npm install -g eslint
-npm install typescript -g
-npm install -g babel-eslint
-npm install -g json-server`
+`npm install --global prettier npm install -g eslint npm install typescript -g npm install -g babel-eslint npm install -g json-server`
 
 - VS Code IDE'sinde code format için
   [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) eklentisini kullanacağız.
@@ -27,7 +23,7 @@ Mock Database için json-server'ı [http://localhost:3010](http://localhost:3010
 
 ### `npm start`
 
-Development modunda ReactJS projesini [http://localhost:3000](http://localhost:3000) üzerinde çalıştırır.
+`Production` modunda ReactJS projesini [http://localhost:3000](http://localhost:3000) üzerinde çalıştırır. Database i ise, production env. üzerinden gelen [https://water-and-foods-db.herokuapp.com](https://water-and-foods-db.herokuapp.com) üzerinden okur.
 
 ### `npm lint || npm lint:fix`
 
@@ -54,16 +50,11 @@ Sistem üzerinde Create React App ile gelen default test'leri çalıştırır.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`build` klasörü üzerinde uygulamanın `Production` build halini çıkartır.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Deployed Project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build`
+App Client URL: [https://water-and-foods.herokuapp.com](https://water-and-foods.herokuapp.com/)
+App DB URL's:
+[https://water-and-foods-db.herokuapp.com/items](https://water-and-foods-db.herokuapp.com/items)
+[https://water-and-foods-db.herokuapp.com/companies](https://water-and-foods-db.herokuapp.com/companies)
