@@ -1,6 +1,6 @@
 {
   "name": "water-and-foods",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "private": true,
   "engines": {
     "node": "14.17.3",
