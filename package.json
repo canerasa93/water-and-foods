@@ -9,7 +9,7 @@
   "homepage": ".",
   "scripts": {
     "mock": "json-server --watch ./mock/db.js --port 3010",
-    "start": "concurrently 'react-scripts start' 'node server.js'",
+    "start": "concurrently ''env-cmd -f env/.env.prod react-scripts start' 'node server.js'",
     "dev": "concurrently 'env-cmd -f env/.env.dev react-scripts start' 'json-server --watch ./mock/db.js --port 3010'",
     "prod": "concurrently 'env-cmd -f env/.env.prod react-scripts start' 'node server.js'",
     "build": "env-cmd -f env/.env.prod react-scripts build",
