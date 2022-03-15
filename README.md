@@ -9,6 +9,10 @@
   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) ve\
   [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) eklentileri, geliştirme esnasında lint uyarı ve hatalarını görüntülemek için kullanılacaktır. Kullandığınız IDE'ye bu eklentileri kurmalısınız.
 
+### yarn install  || npm install
+
+Uygulamanın lokalde çalışması için gerekli paketlerin yüklenmesini sağlar.
+
 ## Package Scripts
 
 Projede çalıştırılabilecek scriptler;
