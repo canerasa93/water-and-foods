@@ -4,9 +4,9 @@
 
 `npm install --global prettier npm install -g eslint npm install typescript -g npm install -g babel-eslint npm install -g json-server`
 
-- VS Code IDE'sinde code format için
-  [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) eklentisini kullanacağız.
-  [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) ve
+- VS Code IDE'sinde code format için;\
+  [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) eklentisini kullanacağız.\
+  [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) ve\
   [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) eklentileri, geliştirme esnasında lint uyarı ve hatalarını görüntülemek için kullanılacaktır. Kullandığınız IDE'ye bu eklentileri kurmalısınız.
 
 ## Package Scripts
@@ -54,7 +54,7 @@ Sistem üzerinde Create React App ile gelen default test'leri çalıştırır.
 
 ### Deployed Project
 
-App Client URL: [https://water-and-foods.herokuapp.com](https://water-and-foods.herokuapp.com/)
-App DB URL's:
-[https://water-and-foods-db.herokuapp.com/items](https://water-and-foods-db.herokuapp.com/items)
+App Client URL: [https://water-and-foods.herokuapp.com](https://water-and-foods.herokuapp.com/)\
+App DB URL's:\
+[https://water-and-foods-db.herokuapp.com/items](https://water-and-foods-db.herokuapp.com/items)\
 [https://water-and-foods-db.herokuapp.com/companies](https://water-and-foods-db.herokuapp.com/companies)
