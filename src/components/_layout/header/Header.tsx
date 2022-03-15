@@ -40,7 +40,7 @@ function Header() {
     <StyledHeader>
       <Container>
         <StyledHeaderCenter>
-          <StyledLogo href={'/'} rel="noreferrer" />
+          <StyledLogo href={'/'} rel="noreferrer" aria-label="Go to main page on logo click"/>
         </StyledHeaderCenter>
         <StyledHeaderRight onClick={() => handleMobileBasket()}>
           <CustomIcon name={ICON_LIST.BASKET} status={ICON_STATUS.WHITE} />

@@ -13,6 +13,10 @@
       "PLACEHOLDERS": {
         "BRANDS": "Search brand",
         "TAGS": "Search tag"
+      },
+      "ARIA_LABELS": {
+        "BRANDS": "Search in brand filters",
+        "TAGS": "Search in tag filters"
       }
     },
     "SIDEBAR": {
