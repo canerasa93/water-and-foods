@@ -13,42 +13,42 @@
 
 Projede çalıştırılabilecek scriptler;
 
-### `npm dev`
+### `yarn dev`
 
 Development modunda ReactJS projesini [http://localhost:3000](http://localhost:3000) üzerinde ve Mock Database için json-server'ı [http://localhost:3010](http://localhost:3010) üzerinde çalıştırır.
 
-### `npm mock`
+### `yarn mock`
 
 Mock Database için json-server'ı [http://localhost:3010](http://localhost:3010) üzerinde çalıştırır.
 
-### `npm start`
+### `yarn start`
 
 `Production` modunda ReactJS projesini [http://localhost:3000](http://localhost:3000) üzerinde çalıştırır. Database i ise, production env. üzerinden gelen [https://water-and-foods-db.herokuapp.com](https://water-and-foods-db.herokuapp.com) üzerinden okur.
 
-### `npm lint || npm lint:fix`
+### `yarn lint || yarn lint:fix`
 
 Tüm dosyalar taranır ve Eslint ile yakalanan hataları listeler veya ":fix" kodu ile otomatik fixlenebilecek hatalar fixlenir.
 
-### `npm format`
+### `yarn format`
 
 Tüm dosyalar taranır ve prettier ile dosyalar otomatik formatlanır.
 
-### `npm tsc`
+### `yarn tsc`
 
 Tüm dosyalar taranır ve olası Typescript hataları listelenir.
 
-### `npm svgr`
+### `yarn svgr`
 
 SVG dosyasından javascript'e çevirerek komponent olarak kullabilememizi sağlar.
 "src/assets/icons" altına eklenen tüm iconları tarar ve "src/components/icons" altında js halini ekler.
 
 `Not`: CustomIcon olarak kullanmak isterseniz, "iconList.ts" constant'ına eklemek gerekir.
 
-### `npm test`
+### `yarn test`
 
 Sistem üzerinde Create React App ile gelen default test'leri çalıştırır.
 
-### `npm run build`
+### `yarn run build`
 
 `build` klasörü üzerinde uygulamanın `Production` build halini çıkartır.
 
