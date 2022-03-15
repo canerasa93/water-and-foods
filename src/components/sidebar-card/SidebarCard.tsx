@@ -75,6 +75,7 @@ function SidebarCard(props: SidebarCardProps) {
             placeholder={'GLOBAL.FORM_ELEMENTS.PLACEHOLDERS.' + title}
             name="search"
             handleOnChange={setSearchData}
+            ariaLabel={'GLOBAL.FORM_ELEMENTS.ARIA_LABELS.' + title}
           />
         )}
 
