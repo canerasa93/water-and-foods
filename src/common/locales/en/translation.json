@@ -1,0 +1,26 @@
+{
+  "GLOBAL": {
+    "TEST": "TEST LANG DATA",
+    "PAGE_TITLES": {
+      "HOME": "Products"
+    },
+    "CTA": {
+      "BUTTONS": {
+        "ADD": "Add"
+      }
+    },
+    "FORM_ELEMENTS": {
+      "PLACEHOLDERS": {
+        "BRANDS": "Search brand",
+        "TAGS": "Search tag"
+      }
+    },
+    "SIDEBAR": {
+      "CARD_TITLES": {
+        "SORTING": "Sorting",
+        "BRANDS": "Brands",
+        "TAGS": "Tags"
+      }
+    }
+  }
+}
